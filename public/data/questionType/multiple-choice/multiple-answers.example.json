@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "questionType": "multiple_choice",
+    "variant": "multiple_answers",
+    "section": 3,
+    "questionNumber": 24,
+    "difficulty": "hard",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Which TWO of the following methods do the students plan to use to distribute their questionnaire?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Handing out copies in the university library"
+      },
+      {
+        "id": "B",
+        "text": "Sending it via email to students"
+      },
+      {
+        "id": "C",
+        "text": "Posting it on social media platforms"
+      },
+      {
+        "id": "D",
+        "text": "Distributing it in lecture halls"
+      },
+      {
+        "id": "E",
+        "text": "Asking friends to share it with their contacts"
+      },
+      {
+        "id": "F",
+        "text": "Putting posters with QR codes around campus"
+      },
+      {
+        "id": "G",
+        "text": "Including it in the university newsletter"
+      }
+    ],
+    "answer": {
+      "correctOptions": ["B", "D"],
+      "explanation": "The students mentioned they would send it via email to students and also distribute it in lecture halls to reach more people."
+    },
+    "instructions": "Choose TWO letters A-G",
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "04:30",
+      "end": "05:15"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section3.mp3"
+    },
+    "uiHints": {
+      "displayType": "checkbox",
+      "shuffleOptions": false,
+      "showLetterLabels": true,
+      "maxSelectable": 2,
+      "minSelectable": 2
+    },
+    "validation": {
+      "minOptions": 5,
+      "maxOptions": 7,
+      "required": true,
+      "minCorrectRequired": 2
+    }
+  },
+  "answerKey": ["B", "D"],
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

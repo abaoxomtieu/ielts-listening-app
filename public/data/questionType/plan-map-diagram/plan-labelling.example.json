@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "questionType": "plan_map_diagram",
+    "variant": "plan_labelling",
+    "section": 2,
+    "questionNumber": 11,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Label the rooms in the library floor plan below.",
+    "image": {
+      "url": "/images/section2-library-plan.png",
+      "altText": "Library floor plan with unlabeled rooms",
+      "width": 800,
+      "height": 600,
+      "hotspots": [
+        {
+          "id": 11,
+          "x": 150,
+          "y": 100,
+          "label": "?",
+          "position": "top"
+        },
+        {
+          "id": 12,
+          "x": 450,
+          "y": 100,
+          "label": "?",
+          "position": "top"
+        },
+        {
+          "id": 13,
+          "x": 150,
+          "y": 300,
+          "label": "?",
+          "position": "top"
+        },
+        {
+          "id": 14,
+          "x": 450,
+          "y": 300,
+          "label": "?",
+          "position": "top"
+        },
+        {
+          "id": 15,
+          "x": 300,
+          "y": 500,
+          "label": "?",
+          "position": "bottom"
+        }
+      ]
+    },
+    "questions": [
+      {
+        "id": 11,
+        "text": "Room 1 (top left)"
+      },
+      {
+        "id": 12,
+        "text": "Room 2 (top right)"
+      },
+      {
+        "id": 13,
+        "text": "Room 3 (bottom left)"
+      },
+      {
+        "id": 14,
+        "text": "Room 4 (bottom right)"
+      },
+      {
+        "id": 15,
+        "text": "Central area"
+      }
+    ],
+    "answer": {
+      "11": "Reception Desk",
+      "12": "Computer Room",
+      "13": "Quiet Study Area",
+      "14": "Group Study Room",
+      "15": "Circulation Desk"
+    },
+    "answerLabels": {
+      "11": "A",
+      "12": "B",
+      "13": "C",
+      "14": "D",
+      "15": "E"
+    },
+    "explanation": "Starting from the entrance on the left, you first encounter the Reception Desk (11). Moving clockwise, the Computer Room (12) is in the top right corner. The Quiet Study Area (13) is in the bottom left, while the Group Study Room (14) is in the bottom right. The Circulation Desk (15) is in the central area.",
+    "instructions": "Choose the correct letters A-E from the box.",
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "02:00",
+      "end": "03:45"
+    },
+    "media": {
+      "image": "/images/section2-library-plan.png",
+      "audio": "/audio/section2.mp3"
+    },
+    "uiHints": {
+      "displayType": "imageWithLabels",
+      "showNumberedLabels": true,
+      "alphabeticalOptions": ["A", "B", "C", "D", "E"],
+      "dragAndDrop": true
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 6,
+      "required": true
+    }
+  },
+  "answerKey": {
+    "11": "A",
+    "12": "B",
+    "13": "C",
+    "14": "D",
+    "15": "E"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

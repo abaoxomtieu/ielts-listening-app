@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "questionType": "matching",
+    "variant": "locations_features",
+    "section": 2,
+    "questionNumber": 11,
+    "difficulty": "easy",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Which feature is mentioned for each of the following places?",
+    "questions": [
+      {
+        "id": 11,
+        "text": "The Market Square"
+      },
+      {
+        "id": 12,
+        "text": "The Art Gallery"
+      },
+      {
+        "id": 13,
+        "text": "The City Museum"
+      },
+      {
+        "id": 14,
+        "text": "The Riverside Park"
+      },
+      {
+        "id": 15,
+        "text": "The Old Cathedral"
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "Recently renovated"
+      },
+      {
+        "id": "B",
+        "text": "Has free admission on Sundays"
+      },
+      {
+        "id": "C",
+        "text": "Offers guided tours"
+      },
+      {
+        "id": "D",
+        "text": "Contains a cafe"
+      },
+      {
+        "id": "E",
+        "text": "Has a famous clock tower"
+      },
+      {
+        "id": "F",
+        "text": "Hosts weekly farmers market"
+      },
+      {
+        "id": "G",
+        "text": "Features a botanical garden"
+      }
+    ],
+    "answer": {
+      "matches": [
+        {
+          "questionId": 11,
+          "optionId": "F"
+        },
+        {
+          "questionId": 12,
+          "optionId": "C"
+        },
+        {
+          "questionId": 13,
+          "optionId": "B"
+        },
+        {
+          "questionId": 14,
+          "optionId": "G"
+        },
+        {
+          "questionId": 15,
+          "optionId": "E"
+        }
+      ],
+      "explanation": "The Market Square hosts a weekly farmers market. The Art Gallery offers guided tours. The City Museum has free admission on Sundays. The Riverside Park features a botanical garden. The Old Cathedral has a famous clock tower."
+    },
+    "instructions": "Choose the correct letter A-G next to Questions 11-15",
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "01:30",
+      "end": "03:20"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section2.mp3"
+    },
+    "uiHints": {
+      "displayType": "dropdown",
+      "shuffleOptions": true,
+      "showLetterLabels": true,
+      "layout": "sideBySide"
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 6,
+      "minOptions": 5,
+      "maxOptions": 7,
+      "eachOptionUsedOnce": true
+    }
+  },
+  "answerKey": {
+    "11": "F",
+    "12": "C",
+    "13": "B",
+    "14": "G",
+    "15": "E"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

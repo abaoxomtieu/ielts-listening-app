@@ -1,0 +1,176 @@
+'use client';
+
+import React, { useState } from 'react';
+
+interface SentenceCompletionItem {
+  id: number;
+  text: string;
+  blankPosition: 'start' | 'middle' | 'end';
+  answer: string;
+  fullSentence: string;
+  audioTimeRange?: {
+    start: string;
+    end: string;
+  };
+}
+
+interface SentenceCompletionProps {
+  questionText: string;
+  instructions: string;
+  sentences: SentenceCompletionItem[];
+  wordLimit: string;
+  questionNumber?: number;
+  showSentenceNumbers?: boolean;
+}
+
+export default function SentenceCompletion({
+  questionText,
+  instructions,
+  sentences,
+  wordLimit,
+  questionNumber,
+  showSentenceNumbers = true,
+}: SentenceCompletionProps) {
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+
+  const handleInputChange = (questionId: number, value: string) => {
+    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+  };
+
+  const renderTextWithInput = (text: string, questionId: number, blankPosition: 'start' | 'middle' | 'end') => {
+    const parts = text.split('[______]');
+
+    if (blankPosition === 'start') {
+      return (
+        <div className="inline-flex items-center gap-1">
+          <input
+            type="text"
+            id={`question-${questionId}`}
+            className={`
+              inline-block w-32 border-b-2 border-gray-500 bg-transparent
+              px-2 py-0.5
+              focus:border-blue-600 focus:outline-none
+              text-gray-900 text-center
+              transition-colors duration-200
+            `}
+            value={answers[questionId] || ''}
+            onChange={(e) => handleInputChange(questionId, e.target.value)}
+            placeholder="_____"
+          />
+          <span className="text-gray-900">{text}</span>
+        </div>
+      );
+    }
+
+    if (blankPosition === 'end') {
+      return (
+        <div className="inline-flex items-center gap-1">
+          <span className="text-gray-900">{text}</span>
+          <input
+            type="text"
+            id={`question-${questionId}`}
+            className={`
+              inline-block w-32 border-b-2 border-gray-500 bg-transparent
+              px-2 py-0.5
+              focus:border-blue-600 focus:outline-none
+              text-gray-900 text-center
+              transition-colors duration-200
+            `}
+            value={answers[questionId] || ''}
+            onChange={(e) => handleInputChange(questionId, e.target.value)}
+            placeholder="_____"
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="inline-flex items-center gap-1">
+        {parts[0] && <span className="text-gray-900">{parts[0]}</span>}
+        <input
+          type="text"
+          id={`question-${questionId}`}
+          className={`
+            inline-block w-32 border-b-2 border-gray-500 bg-transparent
+            px-2 py-0.5
+            focus:border-blue-600 focus:outline-none
+            text-gray-900 text-center
+            transition-colors duration-200
+          `}
+          value={answers[questionId] || ''}
+          onChange={(e) => handleInputChange(questionId, e.target.value)}
+          placeholder="_____"
+        />
+        {parts[1] && <span className="text-gray-900">{parts[1]}</span>}
+      </div>
+    );
+  };
+
+  return (
+    <div className="w-full max-w-4xl mx-auto p-6 bg-white border-2 border-gray-300 rounded-lg shadow-sm">
+      {/* Header Section */}
+      <div className="mb-6 pb-4 border-b-2 border-gray-400">
+        {questionNumber && (
+          <div className="text-sm font-semibold text-gray-700 mb-2">
+            Questions {questionNumber}-{questionNumber + sentences.length - 1}
+          </div>
+        )}
+        <h2 className="text-xl font-bold text-gray-900 mb-2">{questionText}</h2>
+        <p className="text-sm font-semibold text-gray-700">{instructions}</p>
+      </div>
+
+      {/* Word Limit Notice */}
+      <div className="mb-6 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
+        <p className="text-sm font-semibold text-blue-800">{wordLimit}</p>
+      </div>
+
+      {/* Sentences Container */}
+      <div className="bg-white border-2 border-gray-400 rounded-lg p-6">
+        <div className="space-y-4">
+          {sentences.map((sentence) => (
+            <div key={sentence.id} className="flex items-start gap-3">
+              {/* Question Number */}
+              {showSentenceNumbers && (
+                <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gray-100 border-2 border-gray-300 rounded-full text-sm font-bold text-gray-700">
+                  {sentence.id}
+                </div>
+              )}
+
+              {/* Sentence Text with Input */}
+              <div className="flex-1">
+                <p className="text-base text-gray-900 leading-relaxed">
+                  {renderTextWithInput(sentence.text, sentence.id, sentence.blankPosition)}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer Instructions */}
+      <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded">
+        <div className="flex items-center gap-2 text-sm text-gray-700">
+          <svg
+            className="w-5 h-5 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span className="font-semibold">Instructions:</span>
+        </div>
+        <ul className="mt-2 ml-7 text-sm text-gray-600 space-y-1">
+          <li>• Complete the sentences using information from the audio</li>
+          <li>• Write your answers in the spaces provided</li>
+          <li>• Follow the word limit specified above</li>
+        </ul>
+      </div>
+    </div>
+  );
+}

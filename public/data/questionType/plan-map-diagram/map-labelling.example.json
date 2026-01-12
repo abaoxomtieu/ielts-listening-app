@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "questionType": "plan_map_diagram",
+    "variant": "map_labelling",
+    "section": 2,
+    "questionNumber": 11,
+    "difficulty": "hard",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Label the locations on the town map below.",
+    "image": {
+      "url": "/images/section2-town-map.png",
+      "altText": "Town map with unlabeled locations",
+      "width": 900,
+      "height": 700,
+      "hotspots": [
+        {
+          "id": 11,
+          "x": 200,
+          "y": 150,
+          "label": "11",
+          "position": "right",
+          "marker": "pin"
+        },
+        {
+          "id": 12,
+          "x": 450,
+          "y": 200,
+          "label": "12",
+          "position": "right",
+          "marker": "pin"
+        },
+        {
+          "id": 13,
+          "x": 650,
+          "y": 350,
+          "label": "13",
+          "position": "left",
+          "marker": "pin"
+        },
+        {
+          "id": 14,
+          "x": 350,
+          "y": 500,
+          "label": "14",
+          "position": "right",
+          "marker": "pin"
+        },
+        {
+          "id": 15,
+          "x": 700,
+          "y": 550,
+          "label": "15",
+          "position": "left",
+          "marker": "pin"
+        }
+      ]
+    },
+    "questions": [
+      {
+        "id": 11,
+        "text": "Location 11"
+      },
+      {
+        "id": 12,
+        "text": "Location 12"
+      },
+      {
+        "id": 13,
+        "text": "Location 13"
+      },
+      {
+        "id": 14,
+        "text": "Location 14"
+      },
+      {
+        "id": 15,
+        "text": "Location 15"
+      }
+    ],
+    "directionsVocabulary": {
+      "startingPoint": "You are at the Tourist Information Centre in the centre of town",
+      "keyPhrases": [
+        "opposite",
+        "next to",
+        "turn left",
+        "turn right",
+        "go straight ahead",
+        "at the junction",
+        "on the corner of"
+      ]
+    },
+    "answer": {
+      "11": "Post Office",
+      "12": "Library",
+      "13": "Swimming Pool",
+      "14": "Shopping Centre",
+      "15": "Train Station"
+    },
+    "answerLabels": {
+      "11": "A",
+      "12": "B",
+      "13": "C",
+      "14": "D",
+      "15": "E"
+    },
+    "explanation": "Starting from the Tourist Information Centre, the Post Office (11) is opposite it on the other side of the street. The Library (12) is next to the Post Office to the right. The Swimming Pool (13) is at the junction after turning left. The Shopping Centre (14) is at the corner of Main Street. The Train Station (15) is located to the south of the Shopping Centre.",
+    "instructions": "Choose the correct letters A-E from the box.",
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "03:00",
+      "end": "05:30"
+    },
+    "media": {
+      "image": "/images/section2-town-map.png",
+      "audio": "/audio/section2.mp3"
+    },
+    "uiHints": {
+      "displayType": "mapWithMarkers",
+      "showNumberedMarkers": true,
+      "alphabeticalOptions": ["A", "B", "C", "D", "E"],
+      "dragAndDrop": true,
+      "zoomEnabled": true
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 6,
+      "required": true
+    }
+  },
+  "answerKey": {
+    "11": "A",
+    "12": "B",
+    "13": "C",
+    "14": "D",
+    "15": "E"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

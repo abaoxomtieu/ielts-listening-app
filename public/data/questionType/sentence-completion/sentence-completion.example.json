@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "questionType": "sentence_completion",
+    "variant": "standard",
+    "section": 4,
+    "questionNumber": 31,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Complete the sentences below. Write",
+    "instructions": "NO MORE THAN TWO WORDS",
+    "sentences": [
+      {
+        "id": 31,
+        "text": "The main reason for the decline in bee populations is the use of [______].",
+        "blankPosition": "end",
+        "answer": "pesticides",
+        "fullSentence": "The main reason for the decline in bee populations is the use of pesticides.",
+        "audioTimeRange": {
+          "start": "02:15",
+          "end": "02:28"
+        }
+      },
+      {
+        "id": 32,
+        "text": "Farmers can help bees by planting [______] flowers.",
+        "blankPosition": "end",
+        "answer": "wild flowers",
+        "fullSentence": "Farmers can help bees by planting wild flowers.",
+        "audioTimeRange": {
+          "start": "02:35",
+          "end": "02:45"
+        }
+      },
+      {
+        "id": 33,
+        "text": "The [______] of certain crops depends entirely on bee pollination.",
+        "blankPosition": "middle",
+        "answer": "production",
+        "fullSentence": "The production of certain crops depends entirely on bee pollination.",
+        "audioTimeRange": {
+          "start": "03:00",
+          "end": "03:12"
+        }
+      },
+      {
+        "id": 34,
+        "text": "Climate change has caused bees to [______] their hives.",
+        "blankPosition": "end",
+        "answer": "abandon",
+        "fullSentence": "Climate change has caused bees to abandon their hives.",
+        "audioTimeRange": {
+          "start": "03:25",
+          "end": "03:38"
+        }
+      },
+      {
+        "id": 35,
+        "text": "Research suggests that [______] radiation may also affect bee behaviour.",
+        "blankPosition": "middle",
+        "answer": "electromagnetic",
+        "fullSentence": "Research suggests that electromagnetic radiation may also affect bee behaviour.",
+        "audioTimeRange": {
+          "start": "03:50",
+          "end": "04:05"
+        }
+      }
+    ],
+    "wordLimit": "NO MORE THAN TWO WORDS",
+    "answer": {
+      "31": "pesticides",
+      "32": "wild flowers",
+      "33": "production",
+      "34": "abandon",
+      "35": "electromagnetic"
+    },
+    "explanation": "The lecture explains that pesticides (31) are the main reason for bee decline. Farmers can help by planting wild flowers (32). Production (33) of certain crops depends on bees. Climate change has caused bees to abandon (34) their hives. Electromagnetic (35) radiation may also affect bee behaviour.",
+    "audioTimeRange": {
+      "start": "02:00",
+      "end": "04:15"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section4.mp3"
+    },
+    "uiHints": {
+      "displayType": "sentences",
+      "showSentenceNumbers": true,
+      "inlineInputs": true
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 8,
+      "wordLimit": "NO MORE THAN TWO WORDS"
+    }
+  },
+  "answerKey": {
+    "31": "pesticides",
+    "32": "wild flowers",
+    "33": "production",
+    "34": "abandon",
+    "35": "electromagnetic"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

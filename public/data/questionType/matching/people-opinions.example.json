@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "questionType": "matching",
+    "variant": "people_opinions",
+    "section": 3,
+    "questionNumber": 26,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "What is each student's opinion about the proposed changes to the library?",
+    "questions": [
+      {
+        "id": 26,
+        "text": "Anna"
+      },
+      {
+        "id": 27,
+        "text": "Ben"
+      },
+      {
+        "id": 28,
+        "text": "Carla"
+      },
+      {
+        "id": 29,
+        "text": "David"
+      },
+      {
+        "id": 30,
+        "text": "Emma"
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "Thinks the changes will be too expensive"
+      },
+      {
+        "id": "B",
+        "text": "Believes the changes will improve accessibility"
+      },
+      {
+        "id": "C",
+        "text": "Is concerned about the loss of quiet study spaces"
+      },
+      {
+        "id": "D",
+        "text": "Feels the changes should be implemented gradually"
+      },
+      {
+        "id": "E",
+        "text": "Supports the changes but wants more information"
+      },
+      {
+        "id": "F",
+        "text": "Thinks the computer facilities are adequate as they are"
+      }
+    ],
+    "answer": {
+      "matches": [
+        {
+          "questionId": 26,
+          "optionId": "E"
+        },
+        {
+          "questionId": 27,
+          "optionId": "A"
+        },
+        {
+          "questionId": 28,
+          "optionId": "C"
+        },
+        {
+          "questionId": 29,
+          "optionId": "B"
+        },
+        {
+          "questionId": 30,
+          "optionId": "F"
+        }
+      ],
+      "explanation": "Anna supports the changes but wants more information. Ben thinks they'll be too expensive. Carla is concerned about losing quiet spaces. David believes they'll improve accessibility. Emma thinks the computer facilities are adequate."
+    },
+    "instructions": "Choose the correct letter A-F next to Questions 26-30",
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "06:20",
+      "end": "08:45"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section3.mp3"
+    },
+    "uiHints": {
+      "displayType": "dropdown",
+      "shuffleOptions": true,
+      "showLetterLabels": true,
+      "layout": "sideBySide"
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 6,
+      "minOptions": 5,
+      "maxOptions": 7,
+      "eachOptionUsedOnce": true
+    }
+  },
+  "answerKey": {
+    "26": "E",
+    "27": "A",
+    "28": "C",
+    "29": "B",
+    "30": "F"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

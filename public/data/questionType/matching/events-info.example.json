@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "questionType": "matching",
+    "variant": "events_info",
+    "section": 2,
+    "questionNumber": 16,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Match each event to the information given about it.",
+    "questions": [
+      {
+        "id": 16,
+        "text": "Jazz Festival"
+      },
+      {
+        "id": 17,
+        "text": "Food Fair"
+      },
+      {
+        "id": 18,
+        "text": "Book Launch"
+      },
+      {
+        "id": 19,
+        "text": "Art Exhibition"
+      },
+      {
+        "id": 20,
+        "text": "Theatre Production"
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "Held in the town hall"
+      },
+      {
+        "id": "B",
+        "text": "Tickets must be booked in advance"
+      },
+      {
+        "id": "C",
+        "text": "Free entry for children under 12"
+      },
+      {
+        "id": "D",
+        "text": "Run for three consecutive days"
+      },
+      {
+        "id": "E",
+        "text": "Features international artists"
+      },
+      {
+        "id": "F",
+        "text": "Includes a workshop for participants"
+      },
+      {
+        "id": "G",
+        "text": "Starts at 6 PM"
+      }
+    ],
+    "answer": {
+      "matches": [
+        {
+          "questionId": 16,
+          "optionId": "E"
+        },
+        {
+          "questionId": 17,
+          "optionId": "C"
+        },
+        {
+          "questionId": 18,
+          "optionId": "G"
+        },
+        {
+          "questionId": 19,
+          "optionId": "F"
+        },
+        {
+          "questionId": 20,
+          "optionId": "B"
+        }
+      ],
+      "explanation": "The Jazz Festival features international artists. The Food Fair has free entry for children under 12. The Book Launch starts at 6 PM. The Art Exhibition includes a workshop for participants. The Theatre Production requires tickets to be booked in advance."
+    },
+    "instructions": "Choose the correct letter A-G next to Questions 16-20",
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "03:45",
+      "end": "05:30"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section2.mp3"
+    },
+    "uiHints": {
+      "displayType": "dropdown",
+      "shuffleOptions": true,
+      "showLetterLabels": true,
+      "layout": "sideBySide"
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 6,
+      "minOptions": 5,
+      "maxOptions": 7,
+      "eachOptionUsedOnce": true
+    }
+  },
+  "answerKey": {
+    "16": "E",
+    "17": "C",
+    "18": "G",
+    "19": "F",
+    "20": "B"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

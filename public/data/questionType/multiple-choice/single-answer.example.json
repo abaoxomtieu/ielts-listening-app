@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "questionType": "multiple_choice",
+    "variant": "single_answer",
+    "section": 3,
+    "questionNumber": 21,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "What is the main reason the students decided to use a questionnaire for their project?",
+    "options": [
+      {
+        "id": "A",
+        "text": "It would allow them to reach a large number of people"
+      },
+      {
+        "id": "B",
+        "text": "It would be easier to analyse the data collected"
+      },
+      {
+        "id": "C",
+        "text": "It would require less time than other methods"
+      },
+      {
+        "id": "D",
+        "text": "It was recommended by their tutor"
+      }
+    ],
+    "answer": {
+      "correctOption": "B",
+      "explanation": "The students mentioned that they chose a questionnaire because it would be easier to analyse the numerical data they collected."
+    },
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "02:15",
+      "end": "02:45"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section3.mp3"
+    },
+    "uiHints": {
+      "displayType": "radio",
+      "shuffleOptions": false,
+      "showLetterLabels": true
+    },
+    "validation": {
+      "minOptions": 3,
+      "maxOptions": 4,
+      "required": true
+    }
+  },
+  "answerKey": "B",
+  "scoring": {
+    "points": 1,
+    "penaltyForWrong": 0
+  }
+}

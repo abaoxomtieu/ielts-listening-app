@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "questionType": "completion",
+    "variant": "note_completion",
+    "section": 4,
+    "questionNumber": 31,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Complete the notes below. Write",
+    "instructions": "ONE WORD ONLY",
+    "notes": {
+      "title": "LECTURE NOTES: SUSTAINABLE AGRICULTURE",
+      "speaker": "Dr. Maria Rodriguez",
+      "date": "12 October 2024",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "bulletPoints": [
+            {
+              "id": 31,
+              "text": "Traditional farming causes significant environmental [______]",
+              "answer": "damage"
+            },
+            {
+              "id": 32,
+              "text": "Sustainable agriculture aims to reduce [______] impact",
+              "answer": "negative"
+            }
+          ]
+        },
+        {
+          "heading": "Key Principles",
+          "bulletPoints": [
+            {
+              "id": 33,
+              "text": "Use of natural [______] instead of chemicals",
+              "answer": "pesticides"
+            },
+            {
+              "id": 34,
+              "text": "Rotation of [______] to maintain soil health",
+              "answer": "crops"
+            }
+          ]
+        },
+        {
+          "heading": "Benefits",
+          "bulletPoints": [
+            {
+              "id": 35,
+              "text": "Improved soil [______] over time",
+              "answer": "quality"
+            },
+            {
+              "id": 36,
+              "text": "Reduced water [______]",
+              "answer": "consumption"
+            }
+          ]
+        },
+        {
+          "heading": "Challenges",
+          "bulletPoints": [
+            {
+              "id": 37,
+              "text": "Higher initial [______] for farmers",
+              "answer": "costs"
+            },
+            {
+              "id": 38,
+              "text": "Need for more [______] education",
+              "answer": "farmer"
+            }
+          ]
+        },
+        {
+          "heading": "Future Outlook",
+          "bulletPoints": [
+            {
+              "id": 39,
+              "text": "Government [______] available",
+              "answer": "support"
+            },
+            {
+              "id": 40,
+              "text": "Growing consumer [______] for organic products",
+              "answer": "demand"
+            }
+          ]
+        }
+      ]
+    },
+    "wordLimit": "ONE WORD ONLY",
+    "answer": {
+      "31": "damage",
+      "32": "negative",
+      "33": "pesticides",
+      "34": "crops",
+      "35": "quality",
+      "36": "consumption",
+      "37": "costs",
+      "38": "farmer",
+      "39": "support",
+      "40": "demand"
+    },
+    "explanation": "The lecture explains that traditional farming causes environmental damage, and sustainable agriculture aims to reduce negative impact. Key principles include using natural pesticides instead of chemicals and rotating crops to maintain soil health. Benefits include improved soil quality and reduced water consumption. Challenges include higher initial costs and need for more farmer education. Future outlook includes government support and growing consumer demand for organic products.",
+    "audioTimeRange": {
+      "start": "05:00",
+      "end": "09:45"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section4.mp3"
+    },
+    "uiHints": {
+      "displayType": "notes",
+      "showSectionHeadings": true,
+      "showBulletPoints": true,
+      "inlineInputs": true
+    },
+    "validation": {
+      "minQuestions": 5,
+      "maxQuestions": 10,
+      "wordLimit": "ONE WORD ONLY"
+    }
+  },
+  "answerKey": {
+    "31": "damage",
+    "32": "negative",
+    "33": "pesticides",
+    "34": "crops",
+    "35": "quality",
+    "36": "consumption",
+    "37": "costs",
+    "38": "farmer",
+    "39": "support",
+    "40": "demand"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

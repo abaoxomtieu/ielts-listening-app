@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "questionType": "completion",
+    "variant": "flowchart_completion",
+    "section": 4,
+    "questionNumber": 31,
+    "difficulty": "hard",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Complete the flow chart below. Write",
+    "instructions": "NO MORE THAN THREE WORDS",
+    "flowchart": {
+      "title": "RESEARCH PROJECT PROCESS",
+      "startNode": {
+        "id": "start",
+        "text": "Identify Research Question",
+        "position": {
+          "x": 50,
+          "y": 50
+        }
+      },
+      "nodes": [
+        {
+          "id": 31,
+          "text": "Conduct [______]",
+          "answer": "literature review",
+          "position": {
+            "x": 50,
+            "y": 150
+          },
+          "audioTimeRange": {
+            "start": "01:20",
+            "end": "01:30"
+          }
+        },
+        {
+          "id": 32,
+          "text": "Choose research [______]",
+          "answer": "methodology",
+          "position": {
+            "x": 50,
+            "y": 250
+          },
+          "audioTimeRange": {
+            "start": "01:35",
+            "end": "01:42"
+          }
+        },
+        {
+          "id": 33,
+          "text": "Obtain [______] approval",
+          "answer": "ethics committee",
+          "position": {
+            "x": 50,
+            "y": 350
+          },
+          "audioTimeRange": {
+            "start": "01:50",
+            "end": "01:58"
+          }
+        },
+        {
+          "id": 34,
+          "text": "Collect primary [______]",
+          "answer": "data",
+          "position": {
+            "x": 50,
+            "y": 450
+          },
+          "audioTimeRange": {
+            "start": "02:05",
+            "end": "02:12"
+          }
+        },
+        {
+          "id": 35,
+          "text": "Analyse and [______] results",
+          "answer": "interpret",
+          "position": {
+            "x": 50,
+            "y": 550
+          },
+          "audioTimeRange": {
+            "start": "02:20",
+            "end": "02:28"
+          }
+        }
+      ],
+      "endNode": {
+        "id": "end",
+        "text": "Write Final Report",
+        "position": {
+          "x": 50,
+          "y": 650
+        }
+      },
+      "connections": [
+        {
+          "from": "start",
+          "to": 31
+        },
+        {
+          "from": 31,
+          "to": 32
+        },
+        {
+          "from": 32,
+          "to": 33
+        },
+        {
+          "from": 33,
+          "to": 34
+        },
+        {
+          "from": 34,
+          "to": 35
+        },
+        {
+          "from": 35,
+          "to": "end"
+        }
+      ]
+    },
+    "wordLimit": "NO MORE THAN THREE WORDS",
+    "answer": {
+      "31": "literature review",
+      "32": "methodology",
+      "33": "ethics committee",
+      "34": "data",
+      "35": "interpret"
+    },
+    "explanation": "The research process starts with identifying research question, then conducting literature review (31). Next, choose research methodology (32) and obtain ethics committee approval (33). Then collect primary data (34), analyse and interpret results (35), finally write report.",
+    "audioTimeRange": {
+      "start": "01:00",
+      "end": "02:40"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section4.mp3"
+    },
+    "uiHints": {
+      "displayType": "flowchart",
+      "showArrows": true,
+      "verticalLayout": true,
+      "editableNodes": true
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 8,
+      "wordLimit": "NO MORE THAN THREE WORDS"
+    }
+  },
+  "answerKey": {
+    "31": "literature review",
+    "32": "methodology",
+    "33": "ethics committee",
+    "34": "data",
+    "35": "interpret"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

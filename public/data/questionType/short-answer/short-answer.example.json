@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "questionType": "short_answer",
+    "variant": "standard",
+    "section": 4,
+    "questionNumber": 31,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Answer the questions below. Write",
+    "instructions": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+    "questions": [
+      {
+        "id": 31,
+        "text": "When was the first electric car produced?",
+        "answer": "1832",
+        "alternativeAnswers": ["1830s"],
+        "answerType": "number",
+        "audioTimeRange": {
+          "start": "01:15",
+          "end": "01:28"
+        }
+      },
+      {
+        "id": 32,
+        "text": "What was the main disadvantage of early electric cars?",
+        "answer": "limited range",
+        "alternativeAnswers": ["short range", "battery life"],
+        "answerType": "text",
+        "audioTimeRange": {
+          "start": "01:35",
+          "end": "01:48"
+        }
+      },
+      {
+        "id": 33,
+        "text": "How long does it take to charge a modern electric car?",
+        "answer": "30 minutes",
+        "alternativeAnswers": ["half an hour", "about 30 minutes"],
+        "answerType": "text",
+        "audioTimeRange": {
+          "start": "02:00",
+          "end": "02:15"
+        }
+      },
+      {
+        "id": 34,
+        "text": "What percentage of cars are expected to be electric by 2030?",
+        "answer": "30%",
+        "alternativeAnswers": ["30 percent", "thirty percent"],
+        "answerType": "number",
+        "audioTimeRange": {
+          "start": "02:30",
+          "end": "02:45"
+        }
+      },
+      {
+        "id": 35,
+        "text": "Which country has the most electric cars?",
+        "answer": "China",
+        "alternativeAnswers": [],
+        "answerType": "text",
+        "audioTimeRange": {
+          "start": "02:55",
+          "end": "03:08"
+        }
+      }
+    ],
+    "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+    "answer": {
+      "31": "1832",
+      "32": "limited range",
+      "33": "30 minutes",
+      "34": "30%",
+      "35": "China"
+    },
+    "explanation": "The first electric car was produced in 1832 (31). Early electric cars suffered from limited range (32). Modern cars take 30 minutes (33) to charge. By 2030, 30% (34) of cars are expected to be electric. China (35) has the most electric cars.",
+    "audioTimeRange": {
+      "start": "01:00",
+      "end": "03:15"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section4.mp3"
+    },
+    "uiHints": {
+      "displayType": "questions",
+      "showQuestionNumbers": true,
+      "inputType": "text",
+      "caseSensitive": false
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 8,
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER"
+    }
+  },
+  "answerKey": {
+    "31": "1832",
+    "32": "limited range",
+    "33": "30 minutes",
+    "34": "30%",
+    "35": "China"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}

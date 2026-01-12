@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "questionType": "completion",
+    "variant": "summary_completion",
+    "section": 4,
+    "questionNumber": 31,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2025-01-11T00:00:00Z"
+  },
+  "content": {
+    "questionText": "Complete the summary below. Choose",
+    "instructions": "ONE WORD ONLY",
+    "summary": {
+      "text": "The lecture discusses the history and development of [31]. The first cameras were invented in the [32] century and were quite large and [33]. Photography became more accessible when [34] film was introduced in the 1880s. The development of [35] cameras allowed ordinary people to take their own photos in the early 20th century.",
+      "blanks": [
+        {
+          "id": 31,
+          "position": 37,
+          "answer": "photography",
+          "audioTimeRange": {
+            "start": "00:30",
+            "end": "00:38"
+          }
+        },
+        {
+          "id": 32,
+          "position": 78,
+          "answer": "nineteenth",
+          "audioTimeRange": {
+            "start": "00:45",
+            "end": "00:52"
+          }
+        },
+        {
+          "id": 33,
+          "position": 112,
+          "answer": "expensive",
+          "audioTimeRange": {
+            "start": "00:55",
+            "end": "01:02"
+          }
+        },
+        {
+          "id": 34,
+          "position": 153,
+          "answer": "roll",
+          "audioTimeRange": {
+            "start": "01:08",
+            "end": "01:15"
+          }
+        },
+        {
+          "id": 35,
+          "position": 204,
+          "answer": "portable",
+          "audioTimeRange": {
+            "start": "01:20",
+            "end": "01:28"
+          }
+        }
+      ]
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "photography"
+      },
+      {
+        "id": "B",
+        "text": "cinematography"
+      },
+      {
+        "id": "C",
+        "text": "eighteenth"
+      },
+      {
+        "id": "D",
+        "text": "nineteenth"
+      },
+      {
+        "id": "E",
+        "text": "expensive"
+      },
+      {
+        "id": "F",
+        "text": "inexpensive"
+      },
+      {
+        "id": "G",
+        "text": "roll"
+      },
+      {
+        "id": "H",
+        "text": "sheet"
+      },
+      {
+        "id": "I",
+        "text": "portable"
+      },
+      {
+        "id": "J",
+        "text": "stationary"
+      }
+    ],
+    "answer": {
+      "31": "photography",
+      "32": "nineteenth",
+      "33": "expensive",
+      "34": "roll",
+      "35": "portable"
+    },
+    "answerLabels": {
+      "31": "A",
+      "32": "D",
+      "33": "E",
+      "34": "G",
+      "35": "I"
+    },
+    "explanation": "The lecture covers the history and development of photography (31). The first cameras were invented in the nineteenth (32) century and were large and expensive (33). Roll (34) film made photography more accessible in the 1880s. Portable (35) cameras enabled ordinary people to take photos in the early 20th century.",
+    "audioTimeRange": {
+      "start": "00:15",
+      "end": "01:35"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section4.mp3"
+    },
+    "uiHints": {
+      "displayType": "summary",
+      "showOptions": true,
+      "dropdownForBlanks": true,
+      "shuffleOptions": false
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 8,
+      "wordLimit": "ONE WORD ONLY"
+    }
+  },
+  "answerKey": {
+    "31": "A",
+    "32": "D",
+    "33": "E",
+    "34": "G",
+    "35": "I"
+  },
+  "scoring": {
+    "points": 1,
+    "partialCredit": false,
+    "penaltyForWrong": 0
+  }
+}
