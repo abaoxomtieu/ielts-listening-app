@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "questionType": "completion",
+    "variant": "flowchart_completion",
+    "section": 4,
+    "questionNumber": 31,
+    "difficulty": "hard",
+    "version": "1.0",
+    "createdAt": "2026-01-12T13:20:16+07:00"
+  },
+  "content": {
+    "questionText": "Complete the flowchart below. Write",
+    "instructions": "NO MORE THAN THREE WORDS",
+    "flowchart": {
+      "title": "RESEARCH PROCESS",
+      "startNode": {
+        "id": "start",
+        "text": "Start",
+        "position": {
+          "x": 50,
+          "y": 50
+        }
+      },
+      "nodes": [
+        {
+          "id": 31,
+          "text": "Conduct literature review",
+          "answer": "literature review",
+          "position": {
+            "x": 50,
+            "y": 150
+          }
+        },
+        {
+          "id": 32,
+          "text": "Choose methodology",
+          "answer": "methodology",
+          "position": {
+            "x": 50,
+            "y": 250
+          }
+        },
+        {
+          "id": 33,
+          "text": "Collect data",
+          "answer": "data",
+          "position": {
+            "x": 50,
+            "y": 350
+          }
+        }
+      ],
+      "endNode": {
+        "id": "end",
+        "text": "Write Report",
+        "position": {
+          "x": 50,
+          "y": 450
+        }
+      },
+      "connections": [
+        {
+          "from": "start",
+          "to": 31
+        },
+        {
+          "from": 31,
+          "to": 32
+        },
+        {
+          "from": 32,
+          "to": 33
+        },
+        {
+          "from": 33,
+          "to": "end"
+        }
+      ]
+    },
+    "wordLimit": "NO MORE THAN THREE WORDS",
+    "audioTimeRange": {
+      "start": "01:00",
+      "end": "03:00"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section4.mp3"
+    },
+    "uiHints": {
+      "displayType": "flowchart",
+      "showArrows": true,
+      "verticalLayout": true
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 8
+    }
+  },
+  "answerKey": {
+    "31": "literature review",
+    "32": "methodology",
+    "33": "data"
+  },
+  "scoring": {
+    "points": 1
+  }
+}

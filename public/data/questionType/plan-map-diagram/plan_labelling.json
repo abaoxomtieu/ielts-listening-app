@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "questionType": "plan_map_diagram",
+    "variant": "plan_labelling",
+    "section": 2,
+    "questionNumber": 11,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2026-01-12T13:20:33+07:00"
+  },
+  "content": {
+    "questionText": "Label the rooms in the office floor plan below.",
+    "image": {
+      "url": "/images/office-plan.png",
+      "altText": "Office floor plan",
+      "width": 800,
+      "height": 600,
+      "hotspots": [
+        {
+          "id": 11,
+          "x": 100,
+          "y": 100,
+          "label": "11",
+          "position": "top"
+        },
+        {
+          "id": 12,
+          "x": 300,
+          "y": 100,
+          "label": "12",
+          "position": "top"
+        },
+        {
+          "id": 13,
+          "x": 200,
+          "y": 300,
+          "label": "13",
+          "position": "bottom"
+        }
+      ]
+    },
+    "questions": [
+      {
+        "id": 11,
+        "text": "Reception"
+      },
+      {
+        "id": 12,
+        "text": "Meeting Room"
+      },
+      {
+        "id": 13,
+        "text": "Workspace"
+      }
+    ],
+    "answer": {
+      "11": "Reception",
+      "12": "Meeting Room",
+      "13": "Workspace"
+    },
+    "answerLabels": {
+      "11": "A",
+      "12": "B",
+      "13": "C"
+    },
+    "explanation": "The Reception is at the top left. The Meeting Room is at the top right. The Workspace is in the center.",
+    "instructions": "Choose the correct letters A-C from the box.",
+    "wordLimit": null,
+    "audioTimeRange": {
+      "start": "02:00",
+      "end": "04:00"
+    },
+    "media": {
+      "image": "/images/office-plan.png",
+      "audio": "/audio/section2.mp3"
+    },
+    "uiHints": {
+      "displayType": "imageWithLabels",
+      "showNumberedLabels": true,
+      "alphabeticalOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "dragAndDrop": true
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 6,
+      "required": true
+    }
+  },
+  "answerKey": {
+    "11": "A",
+    "12": "B",
+    "13": "C"
+  },
+  "scoring": {
+    "points": 1
+  }
+}

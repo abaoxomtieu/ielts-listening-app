@@ -1,0 +1,13 @@
+
+> ielts-listening-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://127.0.2.2:3000
+
+✓ Starting...
+✓ Ready in 545ms
+ GET / 200 in 295ms (compile: 180ms, render: 116ms)
+ GET / 200 in 26ms (compile: 2ms, render: 24ms)
+[?25h

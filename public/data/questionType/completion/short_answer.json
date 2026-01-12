@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "questionType": "completion",
+    "variant": "short_answer",
+    "section": null,
+    "questionNumber": null,
+    "difficulty": null,
+    "version": null,
+    "createdAt": null
+  },
+  "content": {
+    "questionText": "Test",
+    "questions": []
+  },
+  "answerKey": null,
+  "scoring": null
+}

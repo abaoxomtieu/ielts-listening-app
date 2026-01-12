@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IELTSListeningQuestion } from '../types';
-import { isCompletionQuestion, isMatchingQuestion, isSentenceCompletionQuestion } from '../types';
+import { IELTSListeningQuestion, UiHints } from '../types';
 import FormCompletion from './completion/FormCompletion';
 import NoteCompletion from './completion/NoteCompletion';
 import TableCompletion from './completion/TableCompletion';
@@ -12,6 +11,14 @@ import SentenceCompletion from './completion/SentenceCompletion';
 import { PeopleOpinions } from './matching/PeopleOpinions';
 import { EventsInfo } from './matching/EventsInfo';
 import { LocationsFeatures } from './matching/LocationsFeatures';
+import { isCompletionQuestion, isMatchingQuestion, isSentenceCompletionQuestion, 
+         isMultipleChoiceQuestion, isShortAnswerQuestion, isPlanMapDiagramQuestion } from '../types';
+import SingleAnswerMultipleChoice from './multiple-choice/SingleAnswerMultipleChoice';
+import MultipleAnswersMultipleChoice from './multiple-choice/MultipleAnswersMultipleChoice';
+import ShortAnswer from './short-answer/ShortAnswer';
+import PlanLabelling from './plan-map-diagram/PlanLabelling';
+import MapLabelling from './plan-map-diagram/MapLabelling';
+import DiagramLabelling from './plan-map-diagram/DiagramLabelling';
 
 interface QuestionRendererProps {
   data: IELTSListeningQuestion;
@@ -119,8 +126,8 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
       <div className="p-6 bg-white border-2 border-gray-300 rounded-lg">
         <h2 className="text-xl font-bold mb-4">{content.questionText}</h2>
         {'instructions' in content && <p className="text-sm text-gray-600 mb-4">{content.instructions}</p>}
-        <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
-          <p className="text-sm text-yellow-800">
+        <div className="p-4 bg-gray-100 border border-gray-300 rounded">
+          <p className="text-sm text-black">
             Completion variant "{meta.variant}" component coming soon
           </p>
         </div>
@@ -131,7 +138,8 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
 
   // Render Sentence Completion Questions
   if (isSentenceCompletionQuestion(data)) {
-    const sentenceCompletionContent = content as any;
+    const sentenceCompletionContent = data.content;
+
     return (
       <div>
         <SentenceCompletion
@@ -143,6 +151,131 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
           showSentenceNumbers={sentenceCompletionContent.uiHints?.showSentenceNumbers}
         />
         {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={sentenceCompletionContent.explanation} />}
+      </div>
+    );
+  }
+
+  // Render Multiple Choice Questions
+  if (isMultipleChoiceQuestion(data)) {
+    const multipleChoiceContent = data.content;
+
+    // Single Answer
+    if (meta.variant === 'single_answer' && 'correctOption' in multipleChoiceContent.answer) {
+      const singleContent = multipleChoiceContent as { questionText: string; options: Array<{ id: string; text: string }>; answer: { correctOption: string; explanation: string }; instructions?: string; uiHints: UiHints };
+      return (
+        <div>
+          <SingleAnswerMultipleChoice
+            questionText={singleContent.questionText}
+            options={singleContent.options}
+            questionNumber={meta.questionNumber}
+            instructions={singleContent.instructions}
+            answer={singleContent.answer}
+            uiHints={singleContent.uiHints as { displayType: 'radio'; showLetterLabels: boolean }}
+          />
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={singleContent.answer.explanation} />}
+        </div>
+      );
+    }
+
+    // Multiple Answers
+    if (meta.variant === 'multiple_answers' && 'correctOptions' in multipleChoiceContent.answer) {
+      const multiContent = multipleChoiceContent as { questionText: string; options: Array<{ id: string; text: string }>; answer: { correctOptions: string[]; explanation: string }; instructions?: string; uiHints: UiHints };
+      return (
+        <div>
+          <MultipleAnswersMultipleChoice
+            questionText={multiContent.questionText}
+            options={multiContent.options}
+            questionNumber={meta.questionNumber}
+            instructions={multiContent.instructions}
+            answer={multiContent.answer}
+            uiHints={multiContent.uiHints as { displayType: 'checkbox'; maxSelectable?: number; minSelectable?: number; showLetterLabels: boolean }}
+          />
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={multiContent.answer.explanation} />}
+        </div>
+      );
+    }
+
+    // Fallback for unknown variant
+    return (
+      <div className="p-6 bg-white border-2 border-gray-300 rounded-lg">
+        <h2 className="text-xl font-bold mb-4">{content.questionText}</h2>
+        <div className="p-4 bg-gray-100 border border-gray-300 rounded">
+          <p className="text-sm text-black">
+            Multiple choice variant "{meta.variant}" component coming soon
+          </p>
+        </div>
+        {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={multipleChoiceContent.answer?.explanation} />}
+      </div>
+    );
+  }
+
+  // Render Short Answer Questions
+  if (isShortAnswerQuestion(data)) {
+    const shortAnswerContent = content as any;
+    return (
+      <div>
+        <ShortAnswer
+          questionText={shortAnswerContent.questionText}
+          instructions={shortAnswerContent.instructions}
+          questions={shortAnswerContent.questions}
+          wordLimit={shortAnswerContent.wordLimit}
+          uiHints={shortAnswerContent.uiHints}
+        />
+        {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={shortAnswerContent.explanation} />}
+      </div>
+    );
+  }
+
+  // Render Plan/Map/Diagram Questions
+  if (isPlanMapDiagramQuestion(data)) {
+    const planMapContent = content as any;
+    
+    // Plan Labelling
+    if (meta.variant === 'plan_labelling') {
+      return (
+        <div>
+          <PlanLabelling
+            data={data as any}
+          />
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={planMapContent.explanation} />}
+        </div>
+      );
+    }
+
+    // Map Labelling
+    if (meta.variant === 'map_labelling') {
+      return (
+        <div>
+          <MapLabelling
+            data={data as any}
+          />
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={planMapContent.explanation} />}
+        </div>
+      );
+    }
+
+    // Diagram Labelling
+    if (meta.variant === 'diagram_labelling') {
+      return (
+        <div>
+          <DiagramLabelling
+            data={data as any}
+          />
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={planMapContent.explanation} />}
+        </div>
+      );
+    }
+
+    // Fallback for unknown variant
+    return (
+      <div className="p-6 bg-white border-2 border-gray-300 rounded-lg">
+        <h2 className="text-xl font-bold mb-4">{content.questionText}</h2>
+        <div className="p-4 bg-gray-100 border border-gray-300 rounded">
+          <p className="text-sm text-black">
+            Plan/Map/Diagram variant "{meta.variant}" component coming soon
+          </p>
+        </div>
+        {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={planMapContent.explanation} />}
       </div>
     );
   }
@@ -205,8 +338,8 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
         )}
       </div>
 
-      <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
-        <p className="text-sm text-yellow-800">
+      <div className="p-4 bg-gray-100 border border-gray-300 rounded">
+        <p className="text-sm text-black">
           Question type "{meta.questionType}" component coming soon
         </p>
       </div>
@@ -224,8 +357,8 @@ interface AnswerKeySectionProps {
 
 function AnswerKeySection({ answerKey, explanation }: AnswerKeySectionProps) {
   return (
-    <div className="mt-6 p-6 bg-green-50 border-2 border-green-300 rounded-lg">
-      <h3 className="text-lg font-bold text-green-900 mb-4 flex items-center">
+    <div className="mt-6 p-6 bg-gray-100 border-2 border-black rounded-lg">
+      <h3 className="text-lg font-bold text-black mb-4 flex items-center">
         <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
         </svg>
@@ -237,11 +370,11 @@ function AnswerKeySection({ answerKey, explanation }: AnswerKeySectionProps) {
           .sort(([a], [b]) => parseInt(a) - parseInt(b))
           .map(([questionNum, answer]) => (
             <div key={questionNum} className="flex items-start">
-              <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-green-600 text-white text-sm font-bold rounded mr-3">
+              <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-black text-white text-sm font-bold rounded mr-3">
                 {questionNum}
               </span>
               <div className="flex-1 pt-1">
-                <span className="text-sm font-medium text-green-900">
+                <span className="text-sm font-medium text-black">
                   {Array.isArray(answer) ? answer.join(', ') : answer}
                 </span>
               </div>
@@ -250,9 +383,9 @@ function AnswerKeySection({ answerKey, explanation }: AnswerKeySectionProps) {
       </div>
 
       {explanation && (
-        <div className="mt-4 pt-4 border-t border-green-200">
-          <h4 className="text-sm font-semibold text-green-900 mb-2">Explanation:</h4>
-          <p className="text-sm text-green-800">{explanation}</p>
+        <div className="mt-4 pt-4 border-t border-gray-300">
+          <h4 className="text-sm font-semibold text-black mb-2">Explanation:</h4>
+          <p className="text-sm text-black">{explanation}</p>
         </div>
       )}
     </div>

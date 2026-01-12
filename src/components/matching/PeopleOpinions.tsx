@@ -33,10 +33,10 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
     <div className="w-full bg-white border border-gray-300 shadow-sm p-8">
       {/* Instructions Header */}
       <div className="mb-8 pb-4 border-b-2 border-gray-400">
-        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+        <h2 className="text-xl font-semibold text-black mb-2">
           {content.questionText}
         </h2>
-        <p className="text-sm text-gray-700 font-medium">
+        <p className="text-sm text-black font-medium">
           {content.instructions}
         </p>
       </div>
@@ -45,22 +45,22 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column - Questions */}
         <div className="space-y-4">
-          <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-4">
+          <h3 className="text-sm font-bold text-black uppercase tracking-wide mb-4">
             People
           </h3>
           {content.questions.map((question, index) => (
             <div
               key={question.id}
-              className="flex items-start space-x-4 p-3 bg-gray-50 rounded border border-gray-200 hover:border-blue-300 transition-colors"
+              className="flex items-start space-x-4 p-3 bg-gray-100 rounded border border-gray-300 hover:border-gray-500 transition-colors"
             >
               {/* Question Number */}
-              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-blue-600 text-white font-bold rounded-md">
+              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-black text-white font-bold rounded-md">
                 {index + 1}
               </div>
 
               {/* Question Text and Dropdown */}
               <div className="flex-1 flex items-center justify-between">
-                <span className="text-base font-medium text-gray-800">
+                <span className="text-base font-medium text-black">
                   {question.text}
                 </span>
               </div>
@@ -70,7 +70,7 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
 
         {/* Right Column - Options and Answer Selection */}
         <div className="space-y-4">
-          <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-4">
+          <h3 className="text-sm font-bold text-black uppercase tracking-wide mb-4">
             Opinions
           </h3>
           {content.questions.map((question, index) => {
@@ -79,9 +79,9 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
             return (
               <div
                 key={question.id}
-                className="flex items-center space-x-3 p-3 bg-white rounded border border-gray-200"
+                className="flex items-center space-x-3 p-3 bg-white rounded border border-gray-300"
               >
-                <span className="text-sm font-semibold text-gray-600 w-8">
+                <span className="text-sm font-semibold text-black w-8">
                   {index + 1}.
                 </span>
 
@@ -96,10 +96,10 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
                       flex-1 flex items-center justify-between
                       px-4 py-2 text-base
                       bg-white border-2
-                      ${currentAnswer ? 'border-blue-500' : 'border-gray-300'}
+                      ${currentAnswer ? 'border-black' : 'border-gray-300'}
                       rounded-md
-                      hover:border-blue-400
-                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                      hover:border-gray-500
+                      focus:outline-none focus:ring-2 focus:ring-black focus:border-black
                       disabled:opacity-50 disabled:cursor-not-allowed
                       transition-colors
                       min-h-[44px]
@@ -135,7 +135,7 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
                       position="popper"
                       sideOffset={5}
                     >
-                      <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-gray-50 text-gray-700 cursor-pointer hover:bg-gray-100">
+                      <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-gray-100 text-black cursor-pointer hover:bg-gray-200">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                           <path d="M6 9L3 6H9L6 9Z" fill="currentColor" />
                         </svg>
@@ -148,9 +148,9 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
                             value={option.id}
                             className={`
                               relative flex items-center px-4 py-3 text-base rounded-md cursor-pointer
-                              hover:bg-gray-100
-                              focus:bg-blue-50 focus:outline-none
-                              data-[state=checked]:bg-blue-100 data-[state=checked]:text-blue-700
+                              hover:bg-gray-200
+                              focus:bg-gray-200 focus:outline-none
+                              data-[state=checked]:bg-gray-200 data-[state=checked]:text-black
                               transition-colors
                             `}
                           >
@@ -162,7 +162,7 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
                         ))}
                       </Select.Viewport>
 
-                      <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-gray-50 text-gray-700 cursor-pointer hover:bg-gray-100">
+                      <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-gray-100 text-black cursor-pointer hover:bg-gray-200">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                           <path d="M6 3L9 6H3L6 3Z" fill="currentColor" />
                         </svg>
@@ -173,7 +173,7 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
 
                 {/* Selected Answer Display */}
                 {currentAnswer && (
-                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-green-100 text-green-700 font-bold rounded-md border-2 border-green-500">
+                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-black text-white font-bold rounded-md border-2 border-black">
                     {currentAnswer}
                   </div>
                 )}
@@ -184,20 +184,20 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
       </div>
 
       {/* Options Reference Box */}
-      <div className="mt-8 p-6 bg-gray-50 rounded-lg border-2 border-gray-300">
-        <h4 className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-4">
+      <div className="mt-8 p-6 bg-gray-100 rounded-lg border-2 border-gray-300">
+        <h4 className="text-sm font-bold text-black uppercase tracking-wide mb-4">
           Options Reference
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {content.options.map((option) => (
             <div
               key={option.id}
-              className="flex items-start space-x-2 p-2 bg-white rounded border border-gray-200"
+              className="flex items-start space-x-2 p-2 bg-white rounded border border-gray-300"
             >
-              <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-600 text-white text-sm font-bold rounded-full">
+              <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-black text-white text-sm font-bold rounded-full">
                 {option.id}
               </span>
-              <span className="text-sm text-gray-700 leading-snug">
+              <span className="text-sm text-black leading-snug">
                 {option.text}
               </span>
             </div>
@@ -212,7 +212,7 @@ export const PeopleOpinions: React.FC<PeopleOpinionsProps> = ({
             Progress: {Object.keys(answers).filter(key => answers[Number(key)]).length} / {content.questions.length} answered
           </span>
           {Object.keys(answers).filter(key => answers[Number(key)]).length === content.questions.length && (
-            <span className="text-green-600 font-medium flex items-center">
+            <span className="text-black font-medium flex items-center">
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>

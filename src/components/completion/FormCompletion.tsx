@@ -57,7 +57,7 @@ export default function FormCompletion({
       id: `field-${field.id}`,
       className: `
         w-full border-b-2 border-gray-400 bg-transparent px-2 py-1
-        focus:border-blue-600 focus:outline-none
+        focus:border-black focus:outline-none
         text-gray-900 placeholder-gray-400
         transition-colors duration-200
       `,
@@ -74,7 +74,7 @@ export default function FormCompletion({
               className={`
                 flex h-10 w-full items-center justify-between
                 border-b-2 border-gray-400 bg-transparent px-2 py-1
-                focus:border-blue-600 focus:outline-none
+                focus:border-black focus:outline-none
                 text-gray-900
                 transition-colors duration-200
               `}
@@ -114,7 +114,7 @@ export default function FormCompletion({
                       className={`
                         relative flex cursor-pointer select-none items-center
                         rounded-sm px-4 py-2 text-sm text-gray-900
-                        focus:bg-blue-50 focus:text-blue-600
+                        focus:bg-gray-200 focus:text-black
                         outline-none
                       `}
                     >
@@ -197,8 +197,8 @@ export default function FormCompletion({
       </div>
 
       {/* Word Limit Notice */}
-      <div className="mb-6 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
-        <p className="text-sm font-semibold text-blue-800">{wordLimit}</p>
+      <div className="mb-6 p-3 bg-gray-100 border-l-4 border-black rounded">
+        <p className="text-sm font-semibold text-black">{wordLimit}</p>
       </div>
 
       {/* Form */}

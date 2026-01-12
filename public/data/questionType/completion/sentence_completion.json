@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "questionType": "completion",
+    "variant": "sentence_completion",
+    "section": 4,
+    "questionNumber": 31,
+    "difficulty": "medium",
+    "version": "1.0",
+    "createdAt": "2026-01-12T13:20:21+07:00"
+  },
+  "content": {
+    "questionText": "Complete the sentences below. Write",
+    "instructions": "NO MORE THAN TWO WORDS",
+    "sentences": [
+      {
+        "id": 31,
+        "text": "The main cause of global warming is",
+        "blankPosition": "end",
+        "answer": "carbon emissions"
+      },
+      {
+        "id": 32,
+        "text": "Renewable energy includes",
+        "blankPosition": "start",
+        "answer": "solar power"
+      },
+      {
+        "id": 33,
+        "text": "Climate change affects",
+        "blankPosition": "middle",
+        "answer": "weather patterns"
+      }
+    ],
+    "wordLimit": "NO MORE THAN TWO WORDS",
+    "audioTimeRange": {
+      "start": "02:00",
+      "end": "04:00"
+    },
+    "media": {
+      "image": null,
+      "audio": "/audio/section4.mp3"
+    },
+    "uiHints": {
+      "displayType": "sentences",
+      "showSentenceNumbers": true,
+      "inlineInputs": true
+    },
+    "validation": {
+      "minQuestions": 3,
+      "maxQuestions": 8
+    }
+  },
+  "answerKey": {
+    "31": "carbon emissions",
+    "32": "solar power",
+    "33": "weather patterns"
+  },
+  "scoring": {
+    "points": 1
+  }
+}

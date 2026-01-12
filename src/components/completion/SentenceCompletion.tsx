@@ -49,15 +49,15 @@ export default function SentenceCompletion({
             className={`
               inline-block w-32 border-b-2 border-gray-500 bg-transparent
               px-2 py-0.5
-              focus:border-blue-600 focus:outline-none
-              text-gray-900 text-center
+              focus:border-black focus:outline-none
+              text-black text-center
               transition-colors duration-200
             `}
             value={answers[questionId] || ''}
             onChange={(e) => handleInputChange(questionId, e.target.value)}
             placeholder="_____"
           />
-          <span className="text-gray-900">{text}</span>
+          <span className="text-black">{text}</span>
         </div>
       );
     }
@@ -65,15 +65,15 @@ export default function SentenceCompletion({
     if (blankPosition === 'end') {
       return (
         <div className="inline-flex items-center gap-1">
-          <span className="text-gray-900">{text}</span>
+          <span className="text-black">{text}</span>
           <input
             type="text"
             id={`question-${questionId}`}
             className={`
               inline-block w-32 border-b-2 border-gray-500 bg-transparent
               px-2 py-0.5
-              focus:border-blue-600 focus:outline-none
-              text-gray-900 text-center
+              focus:border-black focus:outline-none
+              text-black text-center
               transition-colors duration-200
             `}
             value={answers[questionId] || ''}
@@ -86,22 +86,22 @@ export default function SentenceCompletion({
 
     return (
       <div className="inline-flex items-center gap-1">
-        {parts[0] && <span className="text-gray-900">{parts[0]}</span>}
+        {parts[0] && <span className="text-black">{parts[0]}</span>}
         <input
           type="text"
           id={`question-${questionId}`}
           className={`
             inline-block w-32 border-b-2 border-gray-500 bg-transparent
             px-2 py-0.5
-            focus:border-blue-600 focus:outline-none
-            text-gray-900 text-center
+            focus:border-black focus:outline-none
+            text-black text-center
             transition-colors duration-200
           `}
           value={answers[questionId] || ''}
           onChange={(e) => handleInputChange(questionId, e.target.value)}
           placeholder="_____"
         />
-        {parts[1] && <span className="text-gray-900">{parts[1]}</span>}
+        {parts[1] && <span className="text-black">{parts[1]}</span>}
       </div>
     );
   };
@@ -111,17 +111,17 @@ export default function SentenceCompletion({
       {/* Header Section */}
       <div className="mb-6 pb-4 border-b-2 border-gray-400">
         {questionNumber && (
-          <div className="text-sm font-semibold text-gray-700 mb-2">
+          <div className="text-sm font-semibold text-black mb-2">
             Questions {questionNumber}-{questionNumber + sentences.length - 1}
           </div>
         )}
-        <h2 className="text-xl font-bold text-gray-900 mb-2">{questionText}</h2>
-        <p className="text-sm font-semibold text-gray-700">{instructions}</p>
+        <h2 className="text-xl font-bold text-black mb-2">{questionText}</h2>
+        <p className="text-sm font-semibold text-black">{instructions}</p>
       </div>
 
       {/* Word Limit Notice */}
-      <div className="mb-6 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
-        <p className="text-sm font-semibold text-blue-800">{wordLimit}</p>
+      <div className="mb-6 p-3 bg-gray-100 border-l-4 border-black rounded">
+        <p className="text-sm font-semibold text-black">{wordLimit}</p>
       </div>
 
       {/* Sentences Container */}
@@ -131,14 +131,14 @@ export default function SentenceCompletion({
             <div key={sentence.id} className="flex items-start gap-3">
               {/* Question Number */}
               {showSentenceNumbers && (
-                <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gray-100 border-2 border-gray-300 rounded-full text-sm font-bold text-gray-700">
+                <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gray-200 border-2 border-gray-400 rounded-full text-sm font-bold text-black">
                   {sentence.id}
                 </div>
               )}
 
               {/* Sentence Text with Input */}
               <div className="flex-1">
-                <p className="text-base text-gray-900 leading-relaxed">
+                <p className="text-base text-black leading-relaxed">
                   {renderTextWithInput(sentence.text, sentence.id, sentence.blankPosition)}
                 </p>
               </div>
@@ -148,10 +148,10 @@ export default function SentenceCompletion({
       </div>
 
       {/* Footer Instructions */}
-      <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded">
-        <div className="flex items-center gap-2 text-sm text-gray-700">
+      <div className="mt-6 p-4 bg-gray-100 border border-gray-300 rounded">
+        <div className="flex items-center gap-2 text-sm text-black">
           <svg
-            className="w-5 h-5 text-blue-600"
+            className="w-5 h-5 text-black"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -166,9 +166,9 @@ export default function SentenceCompletion({
           <span className="font-semibold">Instructions:</span>
         </div>
         <ul className="mt-2 ml-7 text-sm text-gray-600 space-y-1">
-          <li>• Complete the sentences using information from the audio</li>
-          <li>• Write your answers in the spaces provided</li>
-          <li>• Follow the word limit specified above</li>
+          <li>Complete the sentences using information from the audio</li>
+          <li>Write your answers in the spaces provided</li>
+          <li>Follow the word limit specified above</li>
         </ul>
       </div>
     </div>
