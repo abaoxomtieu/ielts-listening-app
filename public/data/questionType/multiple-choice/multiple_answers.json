@@ -65,10 +65,7 @@
       "minSelectable": 2
     },
     "validation": {
-      "minOptions": 5,
-      "maxOptions": 7,
-      "required": true,
-      "minCorrectRequired": 2
+      "wordLimit": null
     }
   },
   "answerKey": {

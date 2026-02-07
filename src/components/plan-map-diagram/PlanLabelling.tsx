@@ -41,31 +41,35 @@ export default function PlanLabelling({ data, disabled = false }: PlanLabellingP
         <p className="text-sm font-semibold text-gray-700">{content.instructions}</p>
       </div>
 
-      {/* Image with Hotspots */}
+      {/* Image with Hotspots - use % so position scales with image size */}
       <div className="mb-8">
-        <div className="relative inline-block">
+        <div className="relative inline-block max-w-full">
           <img
             src={image.url}
             alt={image.altText}
-            style={{ width: image.width || '100%', height: image.height || 'auto' }}
-            className="border border-gray-300 rounded"
+            className="block max-w-full h-auto border border-gray-300 rounded"
           />
 
-          {/* Hotspots */}
-          {image.hotspots?.map((hotspot) => (
+          {/* Hotspots - position as % of image dimensions so they match at any display size */}
+          {image.hotspots?.map((hotspot) => {
+            const imgW = image.width || 1;
+            const imgH = image.height || 1;
+            const leftPct = (hotspot.x / imgW) * 100;
+            const topPct = (hotspot.y / imgH) * 100;
+            return (
             <div
               key={hotspot.id}
-              className="absolute flex flex-col items-center"
-              style={{ left: hotspot.x, top: hotspot.y }}
+              className="absolute flex flex-col items-center -translate-x-1/2 -translate-y-1/2"
+              style={{ left: `${leftPct}%`, top: `${topPct}%` }}
             >
-              {/* Label Positioning */}
+              {/* Label Positioning – marker shows number or letter (hotspot.label) */}
               <div className={getHotspotLabelStyle(hotspot.position)}>
-                <div className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mb-1">
+                <div className="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mb-1 shrink-0">
                   {hotspot.label}
                 </div>
 
-                {/* Dropdown */}
-                {uiHints?.alphabeticalOptions && (
+                {/* Dropdown on map only when not "below list" IELTS style */}
+                {uiHints?.answerInput !== 'belowList' && uiHints?.alphabeticalOptions && (
                   <div className="bg-white border-2 border-gray-300 rounded shadow-sm">
                     <Select.Root
                       value={selectedOptions[hotspot.id] || ''}
@@ -78,37 +82,16 @@ export default function PlanLabelling({ data, disabled = false }: PlanLabellingP
                       >
                         <Select.Value placeholder="?" />
                         <Select.Icon className="ml-2">
-                          <svg
-                            width="12"
-                            height="12"
-                            viewBox="0 0 12 12"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M3 4.5L6 7.5L9 4.5"
-                              stroke="currentColor"
-                              strokeWidth="1.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </Select.Icon>
                       </Select.Trigger>
-
                       <Select.Portal>
-                        <Select.Content
-                          className="overflow-hidden bg-white border-2 border-gray-300 rounded shadow-lg max-h-48 z-50"
-                          position="popper"
-                          sideOffset={5}
-                        >
+                        <Select.Content className="overflow-hidden bg-white border-2 border-gray-300 rounded shadow-lg max-h-48 z-50" position="popper" sideOffset={5}>
                           <Select.Viewport className="p-1">
                             {uiHints.alphabeticalOptions.map((option) => (
-                              <Select.Item
-                                key={option}
-                                value={option}
-                                className="relative flex items-center px-4 py-2 text-sm rounded cursor-pointer hover:bg-gray-100 focus:bg-blue-50 focus:outline-none transition-colors"
-                              >
+                              <Select.Item key={option} value={option} className="relative flex items-center px-4 py-2 text-sm rounded cursor-pointer hover:bg-gray-100 focus:bg-blue-50 focus:outline-none transition-colors">
                                 <Select.ItemText>{option}</Select.ItemText>
                               </Select.Item>
                             ))}
@@ -127,11 +110,12 @@ export default function PlanLabelling({ data, disabled = false }: PlanLabellingP
                 </div>
               )}
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Questions List */}
+      {/* Questions List – with optional dropdown per question (IELTS "below list" style) */}
       <div className="space-y-4">
         <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wide mb-4">
           Questions
@@ -139,12 +123,43 @@ export default function PlanLabelling({ data, disabled = false }: PlanLabellingP
         {questions.map((question) => (
           <div
             key={question.id}
-            className="flex items-start space-x-4 p-4 bg-gray-50 rounded border border-gray-200"
+            className="flex items-center gap-4 p-4 bg-gray-50 rounded border border-gray-200 flex-wrap"
           >
             <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-blue-600 text-white font-bold rounded-md">
               {question.id}
             </div>
-            <p className="text-base text-gray-800">{question.text}</p>
+            <p className="text-base text-gray-800 flex-1 min-w-0">{question.text}</p>
+            {uiHints?.answerInput === 'belowList' && uiHints?.alphabeticalOptions && (
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="text-sm text-gray-500">…………</span>
+                <Select.Root
+                  value={selectedOptions[question.id] || ''}
+                  onValueChange={(value) => handleSelectChange(question.id, value)}
+                  disabled={disabled}
+                >
+                  <Select.Trigger
+                    className="flex items-center justify-between px-3 py-2 text-sm bg-white border-2 border-gray-400 rounded focus:border-blue-600 focus:outline-none min-w-[56px]"
+                    aria-label={`Answer for ${question.id}`}
+                  >
+                    <Select.Value placeholder="?" />
+                    <Select.Icon className="ml-1">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </Select.Icon>
+                  </Select.Trigger>
+                  <Select.Portal>
+                    <Select.Content className="overflow-hidden bg-white border-2 border-gray-300 rounded shadow-lg max-h-48 z-50" position="popper" sideOffset={5}>
+                      <Select.Viewport className="p-1">
+                        {uiHints.alphabeticalOptions.map((option) => (
+                          <Select.Item key={option} value={option} className="relative flex items-center px-4 py-2 text-sm rounded cursor-pointer hover:bg-gray-100 focus:bg-blue-50 focus:outline-none">
+                            <Select.ItemText>{option}</Select.ItemText>
+                          </Select.Item>
+                        ))}
+                      </Select.Viewport>
+                    </Select.Content>
+                  </Select.Portal>
+                </Select.Root>
+              </div>
+            )}
           </div>
         ))}
       </div>

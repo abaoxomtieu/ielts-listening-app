@@ -68,10 +68,12 @@
       "minCorrectRequired": 2
     }
   },
-  "answerKey": [
-    "B",
-    "D"
-  ],
+  "answerKey": {
+    "24": [
+      "B",
+      "D"
+    ]
+  },
   "scoring": {
     "points": 1,
     "partialCredit": false,

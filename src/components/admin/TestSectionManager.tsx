@@ -10,6 +10,7 @@ import FlowchartCompletionBuilder from './builders/completion/FlowchartCompletio
 import MatchingBuilder from './builders/matching/MatchingBuilder';
 import MultipleChoiceBuilder from './builders/multiple-choice/MultipleChoiceBuilder';
 import ShortAnswerBuilder from './builders/short-answer/ShortAnswerBuilder';
+import PlanMapDiagramBuilder from './builders/plan-map-diagram/PlanMapDiagramBuilder';
 
 interface Props {
     section: TestSection;
@@ -28,14 +29,16 @@ export default function TestSectionManager({ section, onChange, onRemove, onFocu
         const isMatching = ['people_opinions', 'events_info', 'locations_features'].includes(variant);
         const isMultipleChoice = ['single_answer', 'multiple_answers'].includes(variant);
         const isShortAnswer = variant === 'short_answer';
+        const isPlanMapDiagram = ['plan_labelling', 'map_labelling', 'diagram_labelling'].includes(variant);
         const questionType = variant === 'sentence_completion' ? 'sentence_completion'
             : isMultipleChoice ? 'multiple_choice'
             : isShortAnswer ? 'short_answer'
+            : isPlanMapDiagram ? 'plan_map_diagram'
             : (isMatching ? 'matching' : 'completion');
         const newQuestion: any = {
             meta: {
                 questionType,
-                variant: variant,
+                variant,
                 section: section.id,
                 questionNumber: section.questions.length > 0
                     ? (section.questions[section.questions.length - 1] as any).meta.questionNumber + 5 // Dummy offset
@@ -90,6 +93,12 @@ export default function TestSectionManager({ section, onChange, onRemove, onFocu
                 return <MultipleChoiceBuilder {...props} variant="multiple_answers" />;
             case 'short_answer':
                 return <ShortAnswerBuilder {...props} />;
+            case 'plan_labelling':
+                return <PlanMapDiagramBuilder {...props} variant="plan_labelling" />;
+            case 'map_labelling':
+                return <PlanMapDiagramBuilder {...props} variant="map_labelling" />;
+            case 'diagram_labelling':
+                return <PlanMapDiagramBuilder {...props} variant="diagram_labelling" />;
             default: return <div>Unknown question type: {variant}</div>;
         }
     };
@@ -164,6 +173,10 @@ export default function TestSectionManager({ section, onChange, onRemove, onFocu
                                 <option value="people_opinions">Matching: People/Opinions</option>
                                 <option value="events_info">Matching: Events/Info</option>
                                 <option value="locations_features">Matching: Locations/Features</option>
+                                <option disabled className="bg-gray-200 font-bold">--- Plan / Map / Diagram ---</option>
+                                <option value="plan_labelling">Plan Labelling</option>
+                                <option value="map_labelling">Map Labelling</option>
+                                <option value="diagram_labelling">Diagram Labelling</option>
                             </select>
                         </div>
                     </div>

@@ -106,13 +106,6 @@
         "description": "Clean water distributed"
       }
     ],
-    "answer": {
-      "31": "Intake Pump",
-      "32": "Screening Chamber",
-      "33": "Sedimentation Tank",
-      "34": "Filter Beds",
-      "35": "Chlorination Unit"
-    },
     "answerLabels": {
       "31": "A",
       "32": "B",
@@ -132,15 +125,16 @@
       "audio": "/audio/section4.mp3"
     },
     "uiHints": {
-      "displayType": "diagramWithLabels",
+      "displayType": "imageWithLabels",
       "showNumberedLabels": true,
       "alphabeticalOptions": ["A", "B", "C", "D", "E"],
       "dragAndDrop": true,
+      "answerInput": "onMap",
       "showProcessFlow": true
     },
     "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 6,
+      "minQuestions": 1,
+      "maxQuestions": 10,
       "required": true
     }
   },

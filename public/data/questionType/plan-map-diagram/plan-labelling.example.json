@@ -20,35 +20,35 @@
           "id": 11,
           "x": 150,
           "y": 100,
-          "label": "?",
+          "label": "11",
           "position": "top"
         },
         {
           "id": 12,
           "x": 450,
           "y": 100,
-          "label": "?",
+          "label": "12",
           "position": "top"
         },
         {
           "id": 13,
           "x": 150,
           "y": 300,
-          "label": "?",
+          "label": "13",
           "position": "top"
         },
         {
           "id": 14,
           "x": 450,
           "y": 300,
-          "label": "?",
+          "label": "14",
           "position": "top"
         },
         {
           "id": 15,
           "x": 300,
           "y": 500,
-          "label": "?",
+          "label": "15",
           "position": "bottom"
         }
       ]
@@ -75,13 +75,6 @@
         "text": "Central area"
       }
     ],
-    "answer": {
-      "11": "Reception Desk",
-      "12": "Computer Room",
-      "13": "Quiet Study Area",
-      "14": "Group Study Room",
-      "15": "Circulation Desk"
-    },
     "answerLabels": {
       "11": "A",
       "12": "B",
@@ -104,11 +97,12 @@
       "displayType": "imageWithLabels",
       "showNumberedLabels": true,
       "alphabeticalOptions": ["A", "B", "C", "D", "E"],
-      "dragAndDrop": true
+      "dragAndDrop": true,
+      "answerInput": "onMap"
     },
     "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 6,
+      "minQuestions": 1,
+      "maxQuestions": 10,
       "required": true
     }
   },

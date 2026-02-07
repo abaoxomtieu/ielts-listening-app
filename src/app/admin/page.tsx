@@ -48,6 +48,16 @@ export default function AdminDashboard() {
                     </Link>
 
                     <Link
+                        href="/admin/plan-map-diagram"
+                        className="block p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow focus:ring-2 focus:ring-blue-500 outline-none"
+                    >
+                        <h2 className="text-xl font-semibold text-teal-600 mb-2">Plan / Map / Diagram Editor</h2>
+                        <p className="text-gray-600">
+                            Create plan, map, or diagram labelling with image upload and drag-and-drop labels.
+                        </p>
+                    </Link>
+
+                    <Link
                         href="/admin/test-builder"
                         className="block p-6 bg-white rounded-lg border-2 border-blue-100 shadow-sm hover:shadow-md hover:border-blue-500 transition-all focus:ring-2 focus:ring-blue-500 outline-none"
                     >

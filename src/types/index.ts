@@ -89,6 +89,8 @@ export interface UiHints {
   showProcessFlow?: boolean;
   maxSelectable?: number;
   minSelectable?: number;
+  /** IELTS map/plan: 'onMap' = dropdown at each marker, 'belowList' = markers on map + dropdown per question below */
+  answerInput?: 'onMap' | 'belowList';
 }
 
 /**
@@ -608,7 +610,9 @@ export interface PlanMapDiagramContent {
   questionText: string;
   image: QuestionImage;
   questions: PlanQuestion[];
-  answer: Record<string, string>;
+  /** @deprecated Unused; đáp án chỉ lưu ở answerKey (question level) */
+  answer?: Record<string, string>;
+  /** Map question/hotspot id → option (e.g. A, B). Cùng dữ liệu với answerKey, giữ để load builder. */
   answerLabels: Record<string, string>;
   explanation: string;
   instructions: string;

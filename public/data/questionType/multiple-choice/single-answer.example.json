@@ -49,7 +49,7 @@
       "required": true
     }
   },
-  "answerKey": "B",
+  "answerKey": {"21": "B"},
   "scoring": {
     "points": 1,
     "penaltyForWrong": 0

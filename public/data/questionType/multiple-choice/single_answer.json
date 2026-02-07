@@ -47,9 +47,7 @@
       "showLetterLabels": true
     },
     "validation": {
-      "minOptions": 3,
-      "maxOptions": 4,
-      "required": true
+      "wordLimit": null
     }
   },
   "answerKey": {

@@ -70,17 +70,10 @@
       "audio": "/audio/section3.mp3"
     },
     "uiHints": {
-      "displayType": "dropdown",
-      "shuffleOptions": true,
-      "showLetterLabels": true,
-      "layout": "sideBySide"
+      "displayType": "matching"
     },
     "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 6,
-      "minOptions": 4,
-      "maxOptions": 7,
-      "eachOptionUsedOnce": true
+      "wordLimit": null
     }
   },
   "answerKey": {

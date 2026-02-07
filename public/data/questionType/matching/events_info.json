@@ -41,14 +41,12 @@
       "audio": "/audio/section2.mp3"
     },
     "uiHints": {
-      "displayType": "dropdown",
-      "shuffleOptions": true,
-      "showLetterLabels": true
+      "displayType": "matching"
     },
     "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 6
-    }
+      "wordLimit": null
+    },
+    "wordLimit": null
   },
   "answerKey": {
     "16": "A"

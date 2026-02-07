@@ -244,7 +244,18 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
   // Render Plan/Map/Diagram Questions
   if (isPlanMapDiagramQuestion(data)) {
     const planMapContent = content as any;
-    
+    const hasImage = planMapContent?.image?.url && planMapContent?.image?.width && planMapContent?.image?.height;
+
+    if (!hasImage) {
+      return (
+        <div className="p-6 bg-white border-2 border-gray-300 rounded-lg">
+          <h2 className="text-xl font-bold mb-4">{planMapContent?.questionText || 'Plan/Map/Diagram'}</h2>
+          <p className="text-sm text-gray-600">Upload an image in the admin builder to see the question.</p>
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={planMapContent?.explanation} />}
+        </div>
+      );
+    }
+
     // Plan Labelling
     if (meta.variant === 'plan_labelling') {
       return (

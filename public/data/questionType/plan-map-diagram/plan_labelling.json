@@ -53,11 +53,6 @@
         "text": "Workspace"
       }
     ],
-    "answer": {
-      "11": "Reception",
-      "12": "Meeting Room",
-      "13": "Workspace"
-    },
     "answerLabels": {
       "11": "A",
       "12": "B",
@@ -82,7 +77,8 @@
         "B",
         "C"
       ],
-      "dragAndDrop": true
+      "dragAndDrop": true,
+      "answerInput": "onMap"
     },
     "validation": {
       "minQuestions": 3,

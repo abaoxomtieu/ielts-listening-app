@@ -92,13 +92,6 @@
         "on the corner of"
       ]
     },
-    "answer": {
-      "11": "Post Office",
-      "12": "Library",
-      "13": "Swimming Pool",
-      "14": "Shopping Centre",
-      "15": "Train Station"
-    },
     "answerLabels": {
       "11": "A",
       "12": "B",
@@ -118,15 +111,15 @@
       "audio": "/audio/section2.mp3"
     },
     "uiHints": {
-      "displayType": "mapWithMarkers",
-      "showNumberedMarkers": true,
+      "displayType": "imageWithLabels",
+      "showNumberedLabels": true,
       "alphabeticalOptions": ["A", "B", "C", "D", "E"],
       "dragAndDrop": true,
-      "zoomEnabled": true
+      "answerInput": "belowList"
     },
     "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 6,
+      "minQuestions": 1,
+      "maxQuestions": 10,
       "required": true
     }
   },

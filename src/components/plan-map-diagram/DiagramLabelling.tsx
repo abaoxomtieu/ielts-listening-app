@@ -57,19 +57,23 @@ export default function DiagramLabelling({ data, disabled = false }: DiagramLabe
       )}
 
       <div className="mb-8">
-        <div className="relative inline-block">
+        <div className="relative inline-block max-w-full">
           <img
             src={image.url}
             alt={image.altText}
-            style={{ width: image.width || '100%', height: image.height || 'auto' }}
-            className="border border-gray-300 rounded"
+            className="block max-w-full h-auto border border-gray-300 rounded"
           />
 
-          {image.hotspots?.map((hotspot) => (
+          {image.hotspots?.map((hotspot) => {
+            const imgW = image.width || 1;
+            const imgH = image.height || 1;
+            const leftPct = (hotspot.x / imgW) * 100;
+            const topPct = (hotspot.y / imgH) * 100;
+            return (
             <div
               key={hotspot.id}
-              className="absolute flex items-center"
-              style={{ left: hotspot.x, top: hotspot.y }}
+              className="absolute flex items-center -translate-x-1/2 -translate-y-1/2"
+              style={{ left: `${leftPct}%`, top: `${topPct}%` }}
             >
               <div className={getHotspotLabelStyle(hotspot.position)}>
                 <div className="flex items-center gap-2">
@@ -145,7 +149,8 @@ export default function DiagramLabelling({ data, disabled = false }: DiagramLabe
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
