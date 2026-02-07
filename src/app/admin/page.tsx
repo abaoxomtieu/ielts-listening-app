@@ -6,7 +6,7 @@ export default function AdminDashboard() {
             <div className="w-full">
                 <h1 className="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <Link
                         href="/admin/completion"
                         className="block p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow focus:ring-2 focus:ring-blue-500 outline-none"
@@ -14,6 +14,26 @@ export default function AdminDashboard() {
                         <h2 className="text-xl font-semibold text-blue-600 mb-2">Completion Type Editor</h2>
                         <p className="text-gray-600">
                             Quickly create standalone completion exercises.
+                        </p>
+                    </Link>
+
+                    <Link
+                        href="/admin/completion?variant=sentence_completion"
+                        className="block p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow focus:ring-2 focus:ring-blue-500 outline-none"
+                    >
+                        <h2 className="text-xl font-semibold text-amber-600 mb-2">Sentence Completion</h2>
+                        <p className="text-gray-600">
+                            Create sentence completion exercises (one variant of completion).
+                        </p>
+                    </Link>
+
+                    <Link
+                        href="/admin/multiple-choice"
+                        className="block p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow focus:ring-2 focus:ring-blue-500 outline-none"
+                    >
+                        <h2 className="text-xl font-semibold text-purple-600 mb-2">Multiple Choice Editor</h2>
+                        <p className="text-gray-600">
+                            Create single-answer or multiple-answers multiple choice questions.
                         </p>
                     </Link>
 

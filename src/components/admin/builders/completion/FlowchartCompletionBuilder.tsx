@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FormSection, FormField } from '../CompletionForm';
+import { FormSection, FormField } from '../../CompletionForm';
 import { FlowchartCompletionContent, FlowchartNodeData } from '@/lib/dtos/completion';
 import FlowchartCompletion from '@/components/completion/FlowchartCompletion';
-import VisualBlankEditor from '../VisualBlankEditor';
+import VisualBlankEditor from '../../VisualBlankEditor';
 
 interface Props {
     initialContent?: any;
@@ -28,7 +28,7 @@ export default function FlowchartCompletionBuilder({ initialContent, onContentCh
                 answerKey[String(id)] = n.answer || '';
                 return { ...n, id };
             }
-            return { ...n, id: `content-${Date.now()}-${Math.random()}` }; // Temp ID for content nodes
+            return { ...n, id: `content-${Date.now()}-${Math.random()}` };
         });
 
         const content: FlowchartCompletionContent = {
@@ -37,7 +37,7 @@ export default function FlowchartCompletionBuilder({ initialContent, onContentCh
             flowchart: {
                 title: flowchartTitle,
                 nodes: formattedNodes,
-                connections: [] // Simplifying connections for builder
+                connections: []
             },
             wordLimit: instructions,
             audioTimeRange: { start: '00:00', end: '00:00' },
@@ -77,7 +77,6 @@ export default function FlowchartCompletionBuilder({ initialContent, onContentCh
     const handleDragStart = (e: React.DragEvent, index: number) => {
         setDraggedIndex(index);
         e.dataTransfer.effectAllowed = 'move';
-        // HTML5 drag image can be custom if needed
     };
 
     const handleDragEnter = (index: number) => {
@@ -118,7 +117,6 @@ export default function FlowchartCompletionBuilder({ initialContent, onContentCh
                                 onDragOver={(e) => e.preventDefault()}
                                 onDragEnter={() => handleDragEnter(idx)}
                             >
-                                {/* Drag Handle Decorator */}
                                 <div
                                     className="mt-8 text-gray-400 cursor-grab active:cursor-grabbing group-hover:text-gray-600 transition-colors bg-gray-100 p-1 rounded hover:bg-gray-200"
                                     draggable

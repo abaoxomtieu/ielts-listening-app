@@ -3,10 +3,7 @@
     "questionType": "multiple_choice",
     "variant": "single_answer",
     "section": 3,
-    "questionNumber": 21,
-    "difficulty": "medium",
-    "version": "1.0",
-    "createdAt": "2025-01-11T00:00:00Z"
+    "questionNumber": 21
   },
   "content": {
     "questionText": "What is the main reason the students decided to use a questionnaire for their project?",

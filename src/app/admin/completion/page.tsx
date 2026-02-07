@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { FormSection, FormField } from '@/components/admin/CompletionForm';
 import { CompletionData } from '@/lib/dtos/completion';
-import SentenceCompletionBuilder from '@/components/admin/builders/SentenceCompletionBuilder';
-import FormCompletionBuilder from '@/components/admin/builders/FormCompletionBuilder';
-import NoteCompletionBuilder from '@/components/admin/builders/NoteCompletionBuilder';
-import TableCompletionBuilder from '@/components/admin/builders/TableCompletionBuilder';
-import SummaryCompletionBuilder from '@/components/admin/builders/SummaryCompletionBuilder';
-import FlowchartCompletionBuilder from '@/components/admin/builders/FlowchartCompletionBuilder';
+import SentenceCompletionBuilder from '@/components/admin/builders/completion/SentenceCompletionBuilder';
+import FormCompletionBuilder from '@/components/admin/builders/completion/FormCompletionBuilder';
+import NoteCompletionBuilder from '@/components/admin/builders/completion/NoteCompletionBuilder';
+import TableCompletionBuilder from '@/components/admin/builders/completion/TableCompletionBuilder';
+import SummaryCompletionBuilder from '@/components/admin/builders/completion/SummaryCompletionBuilder';
+import FlowchartCompletionBuilder from '@/components/admin/builders/completion/FlowchartCompletionBuilder';
 
 // Imports
 import SentenceCompletion from '@/components/completion/SentenceCompletion';
@@ -18,14 +19,20 @@ import TableCompletion from '@/components/completion/TableCompletion';
 import SummaryCompletion from '@/components/completion/SummaryCompletion';
 import FlowchartCompletion from '@/components/completion/FlowchartCompletion';
 
+const COMPLETION_VARIANTS = ['sentence_completion', 'form_completion', 'note_completion', 'table_completion', 'summary_completion', 'flowchart_completion'] as const;
+
 export default function CompletionAdminPage() {
+    const searchParams = useSearchParams();
+    const variantFromUrl = searchParams.get('variant');
+    const initialVariant = variantFromUrl && COMPLETION_VARIANTS.includes(variantFromUrl as any) ? variantFromUrl : 'sentence_completion';
+
     const [loading, setLoading] = useState(false);
     const [saveStatus, setSaveStatus] = useState<{ success?: boolean; message?: string } | null>(null);
     const [filename, setFilename] = useState('completion_exercise');
     const [activeTab, setActiveTab] = useState<'preview' | 'json'>('preview');
 
     // Meta State
-    const [variant, setVariant] = useState<string>('sentence_completion');
+    const [variant, setVariant] = useState<string>(initialVariant);
     const [section, setSection] = useState<number>(4);
     const [questionNumber, setQuestionNumber] = useState<number>(31);
 

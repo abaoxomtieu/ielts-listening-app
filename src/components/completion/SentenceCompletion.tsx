@@ -24,11 +24,12 @@ interface SentenceCompletionProps {
 export default function SentenceCompletion({
   questionText,
   instructions,
-  sentences,
+  sentences = [],
   wordLimit,
   questionNumber,
   showSentenceNumbers = true,
 }: SentenceCompletionProps) {
+  const safeSentences = Array.isArray(sentences) ? sentences : [];
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
   const handleInputChange = (questionId: number, value: string) => {
@@ -39,7 +40,7 @@ export default function SentenceCompletion({
     const parts = (text || '').split('[______]');
 
     return (
-      <div className="inline-flex items-center gap-1 flex-wrap">
+      <span className="inline-flex items-center gap-1 flex-wrap">
         {parts[0] && <span className="text-black">{parts[0]}</span>}
         <input
           type="text"
@@ -56,7 +57,7 @@ export default function SentenceCompletion({
           placeholder="_____"
         />
         {parts[1] && <span className="text-black">{parts[1]}</span>}
-      </div>
+      </span>
     );
   };
 
@@ -64,9 +65,9 @@ export default function SentenceCompletion({
     <div className="w-full max-w-4xl mx-auto p-6 bg-white border-2 border-gray-300 rounded-lg shadow-sm">
       {/* Header Section */}
       <div className="mb-6 pb-4 border-b-2 border-gray-400">
-        {questionNumber && (
+        {questionNumber && safeSentences.length > 0 && (
           <div className="text-sm font-semibold text-black mb-2">
-            Questions {questionNumber}-{questionNumber + sentences.length - 1}
+            Questions {questionNumber}-{questionNumber + safeSentences.length - 1}
           </div>
         )}
         <h2 className="text-xl font-bold text-black mb-2">{questionText}</h2>
@@ -81,23 +82,27 @@ export default function SentenceCompletion({
       {/* Sentences Container */}
       <div className="bg-white border-2 border-gray-400 rounded-lg p-6">
         <div className="space-y-4">
-          {sentences.map((sentence) => (
-            <div key={sentence.id} className="flex items-start gap-3">
-              {/* Question Number */}
-              {showSentenceNumbers && (
-                <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gray-200 border-2 border-gray-400 rounded-full text-sm font-bold text-black">
-                  {sentence.id}
-                </div>
-              )}
+          {safeSentences.length === 0 ? (
+            <p className="text-gray-500 italic text-sm">No sentences added yet. Add sentences in the editor.</p>
+          ) : (
+            safeSentences.map((sentence) => (
+              <div key={sentence.id} className="flex items-start gap-3">
+                {/* Question Number */}
+                {showSentenceNumbers && (
+                  <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gray-200 border-2 border-gray-400 rounded-full text-sm font-bold text-black">
+                    {sentence.id}
+                  </div>
+                )}
 
-              {/* Sentence Text with Input */}
-              <div className="flex-1">
-                <p className="text-base text-black leading-relaxed">
-                  {renderTextWithInput(sentence.text, sentence.id)}
-                </p>
+                {/* Sentence Text with Input */}
+                <div className="flex-1">
+                  <p className="text-base text-black leading-relaxed">
+                    {renderTextWithInput(sentence.text, sentence.id)}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
 

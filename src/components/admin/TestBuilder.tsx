@@ -25,6 +25,7 @@ export default function TestBuilder({ onSave }: Props) {
 
     const [sections, setSections] = useState<TestSection[]>([]);
     const [activeSectionId, setActiveSectionId] = useState<number | null>(null);
+    const [activeQuestionIndex, setActiveQuestionIndex] = useState<number | null>(null);
 
     const addSection = () => {
         if (sections.length >= 4) return;
@@ -82,7 +83,12 @@ export default function TestBuilder({ onSave }: Props) {
 
                         <div className="space-y-10">
                             {section.questions.map((q, qIdx) => (
-                                <QuestionRenderer key={qIdx} data={q} />
+                                <div
+                                    key={qIdx}
+                                    className={`rounded-lg transition-all ${activeSectionId === section.id && activeQuestionIndex === qIdx ? 'ring-2 ring-amber-500 ring-offset-2 bg-amber-50/60' : ''}`}
+                                >
+                                    <QuestionRenderer data={q} />
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -170,7 +176,8 @@ export default function TestBuilder({ onSave }: Props) {
                                     section={section}
                                     onRemove={() => removeSection(idx)}
                                     onChange={(updated) => updateSection(idx, updated)}
-                                    onFocus={() => setActiveSectionId(section.id)}
+                                    onFocus={() => { setActiveSectionId(section.id); setActiveQuestionIndex(null); }}
+                                    onQuestionFocus={(qIdx) => { setActiveSectionId(section.id); setActiveQuestionIndex(qIdx); }}
                                 />
                             ))}
 

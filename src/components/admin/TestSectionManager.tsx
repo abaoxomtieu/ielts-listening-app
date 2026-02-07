@@ -1,31 +1,40 @@
 import React, { useState } from 'react';
 import { FormSection, FormField } from './CompletionForm';
 import { IELTSListeningQuestion, TestSection } from '@/types';
-import SentenceCompletionBuilder from './builders/SentenceCompletionBuilder';
-import FormCompletionBuilder from './builders/FormCompletionBuilder';
-import NoteCompletionBuilder from './builders/NoteCompletionBuilder';
-import TableCompletionBuilder from './builders/TableCompletionBuilder';
-import SummaryCompletionBuilder from './builders/SummaryCompletionBuilder';
-import FlowchartCompletionBuilder from './builders/FlowchartCompletionBuilder';
-import MatchingBuilder from './builders/MatchingBuilder';
+import SentenceCompletionBuilder from './builders/completion/SentenceCompletionBuilder';
+import FormCompletionBuilder from './builders/completion/FormCompletionBuilder';
+import NoteCompletionBuilder from './builders/completion/NoteCompletionBuilder';
+import TableCompletionBuilder from './builders/completion/TableCompletionBuilder';
+import SummaryCompletionBuilder from './builders/completion/SummaryCompletionBuilder';
+import FlowchartCompletionBuilder from './builders/completion/FlowchartCompletionBuilder';
+import MatchingBuilder from './builders/matching/MatchingBuilder';
+import MultipleChoiceBuilder from './builders/multiple-choice/MultipleChoiceBuilder';
+import ShortAnswerBuilder from './builders/short-answer/ShortAnswerBuilder';
 
 interface Props {
     section: TestSection;
     onChange: (updatedSection: TestSection) => void;
     onRemove: () => void;
     onFocus?: () => void;
+    onQuestionFocus?: (questionIndex: number) => void;
 }
 
-export default function TestSectionManager({ section, onChange, onRemove, onFocus }: Props) {
+export default function TestSectionManager({ section, onChange, onRemove, onFocus, onQuestionFocus }: Props) {
     const updateSection = (updates: Partial<TestSection>) => {
         onChange({ ...section, ...updates });
     };
 
     const addQuestion = (variant: string) => {
         const isMatching = ['people_opinions', 'events_info', 'locations_features'].includes(variant);
+        const isMultipleChoice = ['single_answer', 'multiple_answers'].includes(variant);
+        const isShortAnswer = variant === 'short_answer';
+        const questionType = variant === 'sentence_completion' ? 'sentence_completion'
+            : isMultipleChoice ? 'multiple_choice'
+            : isShortAnswer ? 'short_answer'
+            : (isMatching ? 'matching' : 'completion');
         const newQuestion: any = {
             meta: {
-                questionType: isMatching ? 'matching' : 'completion',
+                questionType,
                 variant: variant,
                 section: section.id,
                 questionNumber: section.questions.length > 0
@@ -75,6 +84,12 @@ export default function TestSectionManager({ section, onChange, onRemove, onFocu
             case 'events_info':
             case 'locations_features':
                 return <MatchingBuilder {...props} />;
+            case 'single_answer':
+                return <MultipleChoiceBuilder {...props} variant="single_answer" />;
+            case 'multiple_answers':
+                return <MultipleChoiceBuilder {...props} variant="multiple_answers" />;
+            case 'short_answer':
+                return <ShortAnswerBuilder {...props} />;
             default: return <div>Unknown question type: {variant}</div>;
         }
     };
@@ -141,6 +156,10 @@ export default function TestSectionManager({ section, onChange, onRemove, onFocu
                                 <option value="table_completion">Table Completion</option>
                                 <option value="summary_completion">Summary Completion</option>
                                 <option value="flowchart_completion">Flowchart Completion</option>
+                                <option disabled className="bg-gray-200 font-bold">--- Multiple Choice ---</option>
+                                <option value="single_answer">Multiple Choice: Single Answer</option>
+                                <option value="multiple_answers">Multiple Choice: Multiple Answers</option>
+                                <option value="short_answer">Short Answer</option>
                                 <option disabled className="bg-gray-200 font-bold">--- Matching ---</option>
                                 <option value="people_opinions">Matching: People/Opinions</option>
                                 <option value="events_info">Matching: Events/Info</option>
@@ -150,7 +169,12 @@ export default function TestSectionManager({ section, onChange, onRemove, onFocu
                     </div>
 
                     {section.questions.map((q, idx) => (
-                        <div key={idx} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                        <div
+                            key={idx}
+                            onClick={(e) => { e.stopPropagation(); onQuestionFocus?.(idx); }}
+                            onFocusCapture={() => onQuestionFocus?.(idx)}
+                            className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
+                        >
                             <div className="bg-gray-100 px-4 py-2 border-b flex justify-between items-center">
                                 <span className="font-semibold text-gray-700">
                                     Question Block {idx + 1}: {(q as any).meta.variant.replace('_', ' ')}

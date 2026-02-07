@@ -32,10 +32,11 @@ interface Props {
 export default function ShortAnswer({
   questionText,
   instructions,
-  questions,
+  questions = [],
   wordLimit,
   uiHints,
 }: Props) {
+  const safeQuestions = Array.isArray(questions) ? questions : [];
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
   const handleInputChange = (questionId: number, value: string) => {
@@ -60,7 +61,10 @@ export default function ShortAnswer({
       </div>
 
       <div className="space-y-4">
-        {questions.map((question) => (
+        {safeQuestions.length === 0 ? (
+          <p className="text-gray-500 italic text-sm">No questions added yet. Add questions in the editor.</p>
+        ) : (
+          safeQuestions.map((question) => (
           <div key={question.id} className="flex items-start gap-3">
             {showQuestionNumbers && (
               <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-gray-100 border-2 border-gray-300 rounded-full text-sm font-bold text-gray-700">
@@ -70,7 +74,7 @@ export default function ShortAnswer({
             <div className="flex-1">
               <p className="text-base text-gray-900 mb-2">{question.text}</p>
               <input
-                type={getInputType(question.answerType)}
+                type={getInputType(question.answerType ?? 'text')}
                 id={`question-${question.id}`}
                 className="w-full border-b-2 border-gray-500 bg-transparent px-2 py-1"
                 value={answers[question.id] || ''}
@@ -78,7 +82,8 @@ export default function ShortAnswer({
               />
             </div>
           </div>
-        ))}
+        ))
+        )}
       </div>
     </div>
   );

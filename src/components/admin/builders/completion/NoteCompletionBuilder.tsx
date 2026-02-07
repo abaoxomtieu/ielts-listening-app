@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FormSection, FormField } from '../CompletionForm';
+import { FormSection, FormField } from '../../CompletionForm';
 import { NoteCompletionContent, NoteSection } from '@/lib/dtos/completion';
 import NoteCompletion from '@/components/completion/NoteCompletion';
-import VisualBlankEditor from '../VisualBlankEditor';
+import VisualBlankEditor from '../../VisualBlankEditor';
 
 interface Props {
     initialContent?: any;

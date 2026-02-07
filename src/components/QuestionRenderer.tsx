@@ -157,10 +157,17 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
 
   // Render Multiple Choice Questions
   if (isMultipleChoiceQuestion(data)) {
-    const multipleChoiceContent = data.content;
+    const rawContent = (data.content || {}) as any;
+    const multipleChoiceContent = {
+      questionText: rawContent?.questionText ?? 'Choose the correct answer.',
+      instructions: rawContent?.instructions ?? '',
+      options: Array.isArray(rawContent?.options) ? rawContent.options : [],
+      answer: rawContent?.answer ?? (meta.variant === 'multiple_answers' ? { correctOptions: [], explanation: '' } : { correctOption: '', explanation: '' }),
+      uiHints: rawContent?.uiHints ?? { displayType: meta.variant === 'multiple_answers' ? 'checkbox' : 'radio', showLetterLabels: true },
+    };
 
     // Single Answer
-    if (meta.variant === 'single_answer' && 'correctOption' in multipleChoiceContent.answer) {
+    if (meta.variant === 'single_answer') {
       const singleContent = multipleChoiceContent as { questionText: string; options: Array<{ id: string; text: string }>; answer: { correctOption: string; explanation: string }; instructions?: string; uiHints: UiHints };
       return (
         <div>
@@ -178,7 +185,7 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
     }
 
     // Multiple Answers
-    if (meta.variant === 'multiple_answers' && 'correctOptions' in multipleChoiceContent.answer) {
+    if (meta.variant === 'multiple_answers') {
       const multiContent = multipleChoiceContent as { questionText: string; options: Array<{ id: string; text: string }>; answer: { correctOptions: string[]; explanation: string }; instructions?: string; uiHints: UiHints };
       return (
         <div>
@@ -198,10 +205,10 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
     // Fallback for unknown variant
     return (
       <div className="p-6 bg-white border-2 border-gray-300 rounded-lg">
-        <h2 className="text-xl font-bold mb-4">{content.questionText}</h2>
+        <h2 className="text-xl font-bold mb-4">{multipleChoiceContent.questionText}</h2>
         <div className="p-4 bg-gray-100 border border-gray-300 rounded">
           <p className="text-sm text-black">
-            Multiple choice variant "{meta.variant}" component coming soon
+            Multiple choice variant &quot;{meta.variant}&quot; component coming soon
           </p>
         </div>
         {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={multipleChoiceContent.answer?.explanation} />}
@@ -211,7 +218,15 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
 
   // Render Short Answer Questions
   if (isShortAnswerQuestion(data)) {
-    const shortAnswerContent = content as any;
+    const rawContent = (content || {}) as any;
+    const safeQuestions = Array.isArray(rawContent?.questions) ? rawContent.questions : [];
+    const shortAnswerContent = {
+      questionText: rawContent?.questionText ?? 'Answer the questions below.',
+      instructions: rawContent?.instructions ?? 'NO MORE THAN TWO WORDS AND/OR A NUMBER',
+      questions: safeQuestions,
+      wordLimit: rawContent?.wordLimit ?? 'NO MORE THAN TWO WORDS AND/OR A NUMBER',
+      uiHints: rawContent?.uiHints ?? { displayType: 'questions', showQuestionNumbers: true, inputType: 'text', caseSensitive: false },
+    };
     return (
       <div>
         <ShortAnswer
@@ -221,7 +236,7 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
           wordLimit={shortAnswerContent.wordLimit}
           uiHints={shortAnswerContent.uiHints}
         />
-        {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={shortAnswerContent.explanation} />}
+        {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={rawContent?.explanation} />}
       </div>
     );
   }

@@ -3,10 +3,7 @@
     "questionType": "matching",
     "variant": "people_opinions",
     "section": 3,
-    "questionNumber": 26,
-    "difficulty": "medium",
-    "version": "1.0",
-    "createdAt": "2025-01-11T00:00:00Z"
+    "questionNumber": 26
   },
   "content": {
     "questionText": "What is each student's opinion about the proposed changes to the library?",
@@ -94,17 +91,10 @@
       "audio": "/audio/section3.mp3"
     },
     "uiHints": {
-      "displayType": "dropdown",
-      "shuffleOptions": true,
-      "showLetterLabels": true,
-      "layout": "sideBySide"
+      "displayType": "matching"
     },
     "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 6,
-      "minOptions": 5,
-      "maxOptions": 7,
-      "eachOptionUsedOnce": true
+      "wordLimit": null
     }
   },
   "answerKey": {

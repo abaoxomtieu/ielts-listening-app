@@ -3,194 +3,26 @@
     "questionType": "completion",
     "variant": "table_completion",
     "section": 3,
-    "questionNumber": 21,
-    "difficulty": "medium",
-    "version": "1.0",
-    "createdAt": "2025-01-11T00:00:00Z"
+    "questionNumber": 21
   },
   "content": {
     "questionText": "Complete the table below. Write",
     "instructions": "NO MORE THAN TWO WORDS",
     "table": {
-      "title": "Student Project Summary",
-      "headers": [
-        "Student Name",
-        "Research Topic",
-        "Data Collection Method",
-        "Key Finding"
-      ],
+      "headers": ["Student Name", "Research Topic", "Data Collection Method", "Key Finding"],
       "rows": [
-        {
-          "id": 21,
-          "cells": [
-            {
-              "value": "John",
-              "isEditable": false
-            },
-            {
-              "value": "Social media usage",
-              "isEditable": false
-            },
-            {
-              "value": "[______]",
-              "isEditable": true,
-              "answer": "Online survey",
-              "audioTimeRange": {
-                "start": "01:30",
-                "end": "01:40"
-              }
-            },
-            {
-              "value": "70% use daily",
-              "isEditable": false
-            }
-          ]
-        },
-        {
-          "id": 22,
-          "cells": [
-            {
-              "value": "Maria",
-              "isEditable": false
-            },
-            {
-              "value": "[______]",
-              "isEditable": true,
-              "answer": "Study habits",
-              "audioTimeRange": {
-                "start": "01:45",
-                "end": "01:52"
-              }
-            },
-            {
-              "value": "Interviews",
-              "isEditable": false
-            },
-            {
-              "value": "Late night studying",
-              "isEditable": false
-            }
-          ]
-        },
-        {
-          "id": 23,
-          "cells": [
-            {
-              "value": "Ahmed",
-              "isEditable": false
-            },
-            {
-              "value": "Campus transport",
-              "isEditable": false
-            },
-            {
-              "value": "[______]",
-              "isEditable": true,
-              "answer": "Observation",
-              "audioTimeRange": {
-                "start": "02:05",
-                "end": "02:12"
-              }
-            },
-            {
-              "value": "Bus overcrowding",
-              "isEditable": false
-            }
-          ]
-        },
-        {
-          "id": 24,
-          "cells": [
-            {
-              "value": "Lisa",
-              "isEditable": false
-            },
-            {
-              "value": "Library services",
-              "isEditable": false
-            },
-            {
-              "value": "Focus groups",
-              "isEditable": false
-            },
-            {
-              "value": "[______]",
-              "isEditable": true,
-              "answer": "Need more resources",
-              "audioTimeRange": {
-                "start": "02:25",
-                "end": "02:35"
-              }
-            }
-          ]
-        },
-        {
-          "id": 25,
-          "cells": [
-            {
-              "value": "Tom",
-              "isEditable": false
-            },
-            {
-              "value": "[______]",
-              "isEditable": true,
-              "answer": "Healthy eating",
-              "audioTimeRange": {
-                "start": "02:48",
-                "end": "02:55"
-              }
-            },
-            {
-              "value": "Questionnaire",
-              "isEditable": false
-            },
-            {
-              "value": "High food costs",
-              "isEditable": false
-            }
-          ]
-        }
+        {"id": 21, "cells": [{"value": "John", "isEditable": false}, {"value": "Social media usage", "isEditable": false}, {"value": "[______]", "isEditable": true, "answer": "Online survey", "audioTimeRange": {"start": "01:30", "end": "01:40"}}, {"value": "70% use daily", "isEditable": false}]},
+        {"id": 22, "cells": [{"value": "Maria", "isEditable": false}, {"value": "[______]", "isEditable": true, "answer": "Study habits", "audioTimeRange": {"start": "01:45", "end": "01:52"}}, {"value": "Interviews", "isEditable": false}, {"value": "Late night studying", "isEditable": false}]},
+        {"id": 23, "cells": [{"value": "Ahmed", "isEditable": false}, {"value": "Campus transport", "isEditable": false}, {"value": "[______]", "isEditable": true, "answer": "Observation", "audioTimeRange": {"start": "02:05", "end": "02:12"}}, {"value": "Bus overcrowding", "isEditable": false}]},
+        {"id": 24, "cells": [{"value": "Lisa", "isEditable": false}, {"value": "Library services", "isEditable": false}, {"value": "Focus groups", "isEditable": false}, {"value": "[______]", "isEditable": true, "answer": "Need more resources", "audioTimeRange": {"start": "02:25", "end": "02:35"}}]},
+        {"id": 25, "cells": [{"value": "Tom", "isEditable": false}, {"value": "[______]", "isEditable": true, "answer": "Healthy eating", "audioTimeRange": {"start": "02:48", "end": "02:55"}}, {"value": "Questionnaire", "isEditable": false}, {"value": "High food costs", "isEditable": false}]}
       ]
     },
     "wordLimit": "NO MORE THAN TWO WORDS",
-    "answer": {
-      "21": "Online survey",
-      "22": "Study habits",
-      "23": "Observation",
-      "24": "Need more resources",
-      "25": "Healthy eating"
-    },
-    "explanation": "John conducted an online survey on social media usage. Maria's topic was study habits, using interviews. Ahmed used observation for campus transport research. Lisa's finding about library services was need more resources from focus groups. Tom researched healthy eating with a questionnaire.",
-    "audioTimeRange": {
-      "start": "01:15",
-      "end": "03:10"
-    },
-    "media": {
-      "image": null,
-      "audio": "/audio/section3.mp3"
-    },
-    "uiHints": {
-      "displayType": "table",
-      "showRowNumbers": false,
-      "showColumnHeaders": true,
-      "editableCells": true
-    },
-    "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 8,
-      "wordLimit": "NO MORE THAN TWO WORDS"
-    }
+    "audioTimeRange": {"start": "01:15", "end": "03:10"},
+    "media": {"image": null, "audio": "/audio/section3.mp3"},
+    "uiHints": {"displayType": "table"}
   },
-  "answerKey": {
-    "21": "Online survey",
-    "22": "Study habits",
-    "23": "Observation",
-    "24": "Need more resources",
-    "25": "Healthy eating"
-  },
-  "scoring": {
-    "points": 1,
-    "partialCredit": false,
-    "penaltyForWrong": 0
-  }
+  "answerKey": {"21": "Online survey", "22": "Study habits", "23": "Observation", "24": "Need more resources", "25": "Healthy eating"},
+  "scoring": {"points": 1, "partialCredit": false, "penaltyForWrong": 0}
 }

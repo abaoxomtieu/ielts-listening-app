@@ -3,10 +3,7 @@
     "questionType": "multiple_choice",
     "variant": "multiple_answers",
     "section": 3,
-    "questionNumber": 24,
-    "difficulty": "hard",
-    "version": "1.0",
-    "createdAt": "2025-01-11T00:00:00Z"
+    "questionNumber": 24
   },
   "content": {
     "questionText": "Which TWO of the following methods do the students plan to use to distribute their questionnaire?",
@@ -41,7 +38,10 @@
       }
     ],
     "answer": {
-      "correctOptions": ["B", "D"],
+      "correctOptions": [
+        "B",
+        "D"
+      ],
       "explanation": "The students mentioned they would send it via email to students and also distribute it in lecture halls to reach more people."
     },
     "instructions": "Choose TWO letters A-G",
@@ -68,7 +68,10 @@
       "minCorrectRequired": 2
     }
   },
-  "answerKey": ["B", "D"],
+  "answerKey": [
+    "B",
+    "D"
+  ],
   "scoring": {
     "points": 1,
     "partialCredit": false,

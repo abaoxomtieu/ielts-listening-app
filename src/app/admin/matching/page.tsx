@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { MatchingData, MatchingContent } from '@/lib/dtos/matching';
-import MatchingBuilder from '@/components/admin/builders/MatchingBuilder';
+import MatchingBuilder from '@/components/admin/builders/matching/MatchingBuilder';
 import QuestionRenderer from '@/components/QuestionRenderer';
 import { FormField } from '@/components/admin/CompletionForm';
 

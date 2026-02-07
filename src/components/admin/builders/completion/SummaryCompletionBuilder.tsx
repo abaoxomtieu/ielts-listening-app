@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FormSection, FormField } from '../CompletionForm';
+import { FormSection, FormField } from '../../CompletionForm';
 import { SummaryCompletionContent } from '@/lib/dtos/completion';
 import SummaryCompletion from '@/components/completion/SummaryCompletion';
 
@@ -17,7 +17,6 @@ export default function SummaryCompletionBuilder({ initialContent, onContentChan
     useEffect(() => {
         const answerKey: Record<string, string> = {};
 
-        // Parse blanks from text like [31], [32]...
         const blankRegex = /\[(\d+)\]/g;
         const blanks = [];
         let match;
@@ -25,10 +24,10 @@ export default function SummaryCompletionBuilder({ initialContent, onContentChan
         while ((match = blankRegex.exec(summaryText)) !== null) {
             blanks.push({
                 id: parseInt(match[1]),
-                position: match.index, // Not strictly accurate for runtime replacement but okay logic
-                answer: '' // Needs manual input?
+                position: match.index,
+                answer: ''
             });
-            answerKey[match[1]] = ''; // Initialize
+            answerKey[match[1]] = '';
         }
 
         const parsedOptions = options ? options.split(',').map((t, i) => ({ id: String.fromCharCode(65 + i), text: t.trim() })) : undefined;
@@ -38,7 +37,7 @@ export default function SummaryCompletionBuilder({ initialContent, onContentChan
             instructions: 'ONE WORD ONLY',
             summary: {
                 text: summaryText,
-                blanks: blanks // Incomplete answers
+                blanks: blanks
             },
             options: parsedOptions,
             wordLimit: 'ONE WORD ONLY',

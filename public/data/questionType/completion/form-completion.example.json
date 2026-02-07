@@ -3,161 +3,29 @@
     "questionType": "completion",
     "variant": "form_completion",
     "section": 1,
-    "questionNumber": 1,
-    "difficulty": "easy",
-    "version": "1.0",
-    "createdAt": "2025-01-11T00:00:00Z"
+    "questionNumber": 1
   },
   "content": {
     "questionText": "Complete the form below. Write",
     "instructions": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
     "formData": {
       "formTitle": "CONFERENCE REGISTRATION",
-      "formType": "registration",
       "fields": [
-        {
-          "id": 1,
-          "label": "Full Name:",
-          "placeholder": "_____________________",
-          "inputType": "text",
-          "required": true,
-          "answer": "Sarah Johnson",
-          "audioTimeRange": {
-            "start": "00:15",
-            "end": "00:25"
-          }
-        },
-        {
-          "id": 2,
-          "label": "Email Address:",
-          "placeholder": "_____________________",
-          "inputType": "email",
-          "required": true,
-          "answer": "s.johnson@email.com",
-          "audioTimeRange": {
-            "start": "00:28",
-            "end": "00:35"
-          }
-        },
-        {
-          "id": 3,
-          "label": "Phone Number:",
-          "placeholder": "_____________________",
-          "inputType": "tel",
-          "required": true,
-          "answer": "07723 456789",
-          "audioTimeRange": {
-            "start": "00:38",
-            "end": "00:45"
-          }
-        },
-        {
-          "id": 4,
-          "label": "Organisation:",
-          "placeholder": "_____________________",
-          "inputType": "text",
-          "required": true,
-          "answer": "City University",
-          "audioTimeRange": {
-            "start": "00:48",
-            "end": "00:55"
-          }
-        },
-        {
-          "id": 5,
-          "label": "Number of attendees:",
-          "placeholder": "_____________________",
-          "inputType": "number",
-          "required": true,
-          "answer": "3",
-          "audioTimeRange": {
-            "start": "00:58",
-            "end": "01:05"
-          }
-        },
-        {
-          "id": 6,
-          "label": "Dietary requirements:",
-          "placeholder": "_____________________",
-          "inputType": "text",
-          "required": false,
-          "answer": "vegetarian",
-          "audioTimeRange": {
-            "start": "01:08",
-            "end": "01:18"
-          }
-        },
-        {
-          "id": 7,
-          "label": "Payment method:",
-          "placeholder": "_____________________",
-          "inputType": "select",
-          "options": ["Credit Card", "Cheque", "Bank Transfer"],
-          "required": true,
-          "answer": "Credit Card",
-          "audioTimeRange": {
-            "start": "01:22",
-            "end": "01:30"
-          }
-        },
-        {
-          "id": 8,
-          "label": "Date of registration:",
-          "placeholder": "_____________________",
-          "inputType": "date",
-          "required": true,
-          "answer": "15 March",
-          "audioTimeRange": {
-            "start": "01:33",
-            "end": "01:40"
-          }
-        }
+        {"id": 1, "label": "Full Name:", "placeholder": "_____________________", "inputType": "text", "required": true, "answer": "Sarah Johnson", "audioTimeRange": {"start": "00:15", "end": "00:25"}},
+        {"id": 2, "label": "Email Address:", "placeholder": "_____________________", "inputType": "email", "required": true, "answer": "s.johnson@email.com", "audioTimeRange": {"start": "00:28", "end": "00:35"}},
+        {"id": 3, "label": "Phone Number:", "placeholder": "_____________________", "inputType": "tel", "required": true, "answer": "07723 456789", "audioTimeRange": {"start": "00:38", "end": "00:45"}},
+        {"id": 4, "label": "Organisation:", "placeholder": "_____________________", "inputType": "text", "required": true, "answer": "City University", "audioTimeRange": {"start": "00:48", "end": "00:55"}},
+        {"id": 5, "label": "Number of attendees:", "placeholder": "_____________________", "inputType": "number", "required": true, "answer": "3", "audioTimeRange": {"start": "00:58", "end": "01:05"}},
+        {"id": 6, "label": "Dietary requirements:", "placeholder": "_____________________", "inputType": "text", "required": false, "answer": "vegetarian", "audioTimeRange": {"start": "01:08", "end": "01:18"}},
+        {"id": 7, "label": "Payment method:", "placeholder": "_____________________", "inputType": "select", "options": ["Credit Card", "Cheque", "Bank Transfer"], "required": true, "answer": "Credit Card", "audioTimeRange": {"start": "01:22", "end": "01:30"}},
+        {"id": 8, "label": "Date of registration:", "placeholder": "_____________________", "inputType": "date", "required": true, "answer": "15 March", "audioTimeRange": {"start": "01:33", "end": "01:40"}}
       ]
     },
     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
-    "answer": {
-      "1": "Sarah Johnson",
-      "2": "s.johnson@email.com",
-      "3": "07723 456789",
-      "4": "City University",
-      "5": "3",
-      "6": "vegetarian",
-      "7": "Credit Card",
-      "8": "15 March"
-    },
-    "explanation": "Sarah Johnson provides her email as s.johnson@email.com, phone as 07723 456789, works at City University, registering for 3 people, is vegetarian, paying by Credit Card, and registered on 15 March.",
-    "audioTimeRange": {
-      "start": "00:00",
-      "end": "01:50"
-    },
-    "media": {
-      "image": null,
-      "audio": "/audio/section1.mp3"
-    },
-    "uiHints": {
-      "displayType": "form",
-      "showFieldNumbers": true,
-      "inlineValidation": true
-    },
-    "validation": {
-      "minFields": 5,
-      "maxFields": 12,
-      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER"
-    }
+    "audioTimeRange": {"start": "00:00", "end": "01:50"},
+    "media": {"image": null, "audio": "/audio/section1.mp3"},
+    "uiHints": {"displayType": "form", "showFieldNumbers": true}
   },
-  "answerKey": {
-    "1": "Sarah Johnson",
-    "2": "s.johnson@email.com",
-    "3": "07723 456789",
-    "4": "City University",
-    "5": "3",
-    "6": "vegetarian",
-    "7": "Credit Card",
-    "8": "15 March"
-  },
-  "scoring": {
-    "points": 1,
-    "partialCredit": false,
-    "penaltyForWrong": 0
-  }
+  "answerKey": {"1": "Sarah Johnson", "2": "s.johnson@email.com", "3": "07723 456789", "4": "City University", "5": "3", "6": "vegetarian", "7": "Credit Card", "8": "15 March"},
+  "scoring": {"points": 1, "partialCredit": false, "penaltyForWrong": 0}
 }

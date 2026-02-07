@@ -3,10 +3,7 @@
     "questionType": "matching",
     "variant": "locations_features",
     "section": 2,
-    "questionNumber": 11,
-    "difficulty": "easy",
-    "version": "1.0",
-    "createdAt": "2025-01-11T00:00:00Z"
+    "questionNumber": 11
   },
   "content": {
     "questionText": "Which feature is mentioned for each of the following places?",
@@ -98,17 +95,10 @@
       "audio": "/audio/section2.mp3"
     },
     "uiHints": {
-      "displayType": "dropdown",
-      "shuffleOptions": true,
-      "showLetterLabels": true,
-      "layout": "sideBySide"
+      "displayType": "matching"
     },
     "validation": {
-      "minQuestions": 3,
-      "maxQuestions": 6,
-      "minOptions": 5,
-      "maxOptions": 7,
-      "eachOptionUsedOnce": true
+      "wordLimit": null
     }
   },
   "answerKey": {

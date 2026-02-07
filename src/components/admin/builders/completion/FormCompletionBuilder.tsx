@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FormSection, FormField } from '../CompletionForm';
+import { FormSection, FormField } from '../../CompletionForm';
 import { FormCompletionContent, FormFieldData } from '@/lib/dtos/completion';
 import FormCompletion from '@/components/completion/FormCompletion';
 

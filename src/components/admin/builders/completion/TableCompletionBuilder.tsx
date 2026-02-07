@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FormSection, FormField } from '../CompletionForm';
+import { FormSection, FormField } from '../../CompletionForm';
 import { TableCompletionContent, TableRow } from '@/lib/dtos/completion';
 import TableCompletion from '@/components/completion/TableCompletion';
-import VisualBlankEditor from '../VisualBlankEditor';
+import VisualBlankEditor from '../../VisualBlankEditor';
 
 interface Props {
     initialContent?: any;
@@ -24,20 +24,13 @@ export default function TableCompletionBuilder({ initialContent, onContentChange
             id: row.id || Date.now(),
             cells: row.cells.map(cell => {
                 if (cell.value.includes('[______]')) {
-                    // If it's a blank but not marked editable, fix it
                     if (!cell.isEditable) cell.isEditable = true;
                     answerKey[String(qCounter)] = cell.answer || '';
-                    // We don't store ID on cell in DTO but rendering needs map
                 }
-                // Side effect: increment counter if editable? 
-                // In actual DTO, answer key maps ID, table rows usually have ID.
-                // TableCompletion component logic: it iterates rows -> cells. 
-                // If cell isEditable, it expects an input.
                 return cell;
             })
         }));
 
-        // Re-calculating IDs for answer key based on simple iteration
         let keyIndex = questionNumber;
         formattedRows.forEach(row => {
             row.cells.forEach(cell => {
@@ -80,7 +73,6 @@ export default function TableCompletionBuilder({ initialContent, onContentChange
         const newRows = [...rows];
         const currentCell = { ...newRows[rowIdx].cells[cellIdx], ...updates };
 
-        // Auto-detect blank
         if (updates.value !== undefined) {
             if (updates.value.includes('[______]')) {
                 currentCell.isEditable = true;

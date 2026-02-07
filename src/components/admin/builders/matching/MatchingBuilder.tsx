@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FormField, FormSection } from '../CompletionForm';
+import { FormField, FormSection } from '../../CompletionForm';
 import { MatchingContent, MatchingQuestionData, MatchingOptionData, MatchingMatch } from '@/lib/dtos/matching';
 
 interface Props {
@@ -62,7 +62,7 @@ export default function MatchingBuilder({ initialContent, onContentChange, quest
     };
 
     const addOption = () => {
-        const nextLetter = String.fromCharCode(65 + options.length); // A, B, C...
+        const nextLetter = String.fromCharCode(65 + options.length);
         setOptions([...options, { id: nextLetter, text: `New Option ${nextLetter}` }]);
     };
 
