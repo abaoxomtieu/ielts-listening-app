@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FormSection, FormField } from '@/components/admin/CompletionForm';
 import { CompletionData } from '@/lib/dtos/completion';
@@ -21,7 +21,7 @@ import FlowchartCompletion from '@/components/completion/FlowchartCompletion';
 
 const COMPLETION_VARIANTS = ['sentence_completion', 'form_completion', 'note_completion', 'table_completion', 'summary_completion', 'flowchart_completion'] as const;
 
-export default function CompletionAdminPage() {
+function CompletionAdminContent() {
     const searchParams = useSearchParams();
     const variantFromUrl = searchParams.get('variant');
     const initialVariant = variantFromUrl && COMPLETION_VARIANTS.includes(variantFromUrl as any) ? variantFromUrl : 'sentence_completion';
@@ -283,5 +283,21 @@ export default function CompletionAdminPage() {
 
             </div>
         </div>
+    );
+}
+
+function CompletionAdminPageFallback() {
+    return (
+        <div className="min-h-screen bg-gray-50 p-8 flex items-center justify-center">
+            <div className="text-gray-500">Loading...</div>
+        </div>
+    );
+}
+
+export default function CompletionAdminPage() {
+    return (
+        <Suspense fallback={<CompletionAdminPageFallback />}>
+            <CompletionAdminContent />
+        </Suspense>
     );
 }
