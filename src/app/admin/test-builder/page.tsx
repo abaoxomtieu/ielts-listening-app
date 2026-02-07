@@ -1,15 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
-import TestBuilder from '@/components/admin/TestBuilder';
+import React, { useState, useEffect } from 'react';
+import TestBuilder, { TestBuilderDraft } from '@/components/admin/TestBuilder';
+import { loadDraft, clearDraft } from '@/lib/draft-storage';
 
 export default function TestBuilderPage() {
     const [saveStatus, setSaveStatus] = useState<{ success?: boolean; message?: string } | null>(null);
+    const [initialDraft, setInitialDraft] = useState<TestBuilderDraft | null | undefined>(undefined);
+
+    useEffect(() => {
+        const draft = loadDraft();
+        setInitialDraft(draft ? { info: draft.info as TestBuilderDraft['info'], sections: draft.sections as TestBuilderDraft['sections'] } : null);
+    }, []);
 
     const handleSave = async (data: any) => {
         setSaveStatus(null);
         try {
-            // Generate a filename from the title
             const filename = data.info.title
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, '-')
@@ -24,6 +30,7 @@ export default function TestBuilderPage() {
             if (!res.ok) throw new Error('Failed to save');
 
             const result = await res.json();
+            clearDraft();
             setSaveStatus({ success: true, message: `Test saved successfully to ${result.path}` });
         } catch (error) {
             setSaveStatus({ success: false, message: 'Error saving test file' });
@@ -58,7 +65,18 @@ export default function TestBuilderPage() {
                     </div>
                 )}
 
-                <TestBuilder onSave={handleSave} />
+                {initialDraft === undefined ? (
+                    <div className="text-gray-500 text-sm py-8">Loading...</div>
+                ) : (
+                    <>
+                        {initialDraft != null && (initialDraft.sections?.length > 0 || initialDraft.info?.title) && (
+                            <div className="mb-4 p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-sm">
+                                Draft restored from this device. Auto-saved every 30s; expires in 24 hours.
+                            </div>
+                        )}
+                        <TestBuilder onSave={handleSave} initialDraft={initialDraft ?? undefined} />
+                    </>
+                )}
             </div>
         </div>
     );

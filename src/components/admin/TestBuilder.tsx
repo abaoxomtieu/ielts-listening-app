@@ -1,31 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FormSection, FormField } from './CompletionForm';
 import { TestInfo, TestSection } from '@/types';
 import TestSectionManager from './TestSectionManager';
 import QuestionRenderer from '../QuestionRenderer';
+import { saveDraft, DRAFT_AUTO_SAVE_INTERVAL_MS } from '@/lib/draft-storage';
+
+export interface TestBuilderDraft {
+    info: TestInfo;
+    sections: TestSection[];
+}
 
 interface Props {
     onSave: (data: any) => Promise<void>;
+    /** Restored from localStorage (draft with TTL). */
+    initialDraft?: TestBuilderDraft | null;
 }
 
-export default function TestBuilder({ onSave }: Props) {
+const defaultTestInfo: TestInfo = {
+    title: 'New IELTS Practice Test',
+    instructions: 'Answer all questions. You will hear each recording once only.',
+    totalDuration: '30 minutes',
+    audioFiles: {
+        section1: '',
+        section2: '',
+        section3: '',
+        section4: ''
+    }
+};
+
+export default function TestBuilder({ onSave, initialDraft }: Props) {
     const [activeTab, setActiveTab] = useState<'editor' | 'json'>('editor');
     const [loading, setLoading] = useState(false);
-    const [testInfo, setTestInfo] = useState<TestInfo>({
-        title: 'New IELTS Practice Test',
-        instructions: 'Answer all questions. You will hear each recording once only.',
-        totalDuration: '30 minutes',
-        audioFiles: {
-            section1: '',
-            section2: '',
-            section3: '',
-            section4: ''
-        }
-    });
-
-    const [sections, setSections] = useState<TestSection[]>([]);
+    const [testInfo, setTestInfo] = useState<TestInfo>(initialDraft?.info ?? defaultTestInfo);
+    const [sections, setSections] = useState<TestSection[]>(initialDraft?.sections ?? []);
     const [activeSectionId, setActiveSectionId] = useState<number | null>(null);
     const [activeQuestionIndex, setActiveQuestionIndex] = useState<number | null>(null);
+    const [lastDraftSavedAt, setLastDraftSavedAt] = useState<number | null>(null);
+    const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+    // Auto-save draft to localStorage every N seconds; TTL 24h is set in saveDraft
+    useEffect(() => {
+        intervalRef.current = setInterval(() => {
+            saveDraft({ info: testInfo, sections });
+            setLastDraftSavedAt(Date.now());
+        }, DRAFT_AUTO_SAVE_INTERVAL_MS);
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
+    }, [testInfo, sections]);
 
     const addSection = () => {
         if (sections.length >= 4) return;
@@ -115,7 +137,12 @@ export default function TestBuilder({ onSave }: Props) {
                 >
                     JSON SOURCE
                 </button>
-                <div className="ml-auto flex items-center pr-4">
+                <div className="ml-auto flex items-center gap-3 pr-4">
+                    {lastDraftSavedAt != null && (
+                        <span className="text-xs text-gray-500" title="Draft auto-saved to this device; expires in 24h">
+                            Draft saved locally
+                        </span>
+                    )}
                     <button
                         onClick={handleSave}
                         disabled={loading}

@@ -47,6 +47,8 @@ export default function PlanLabelling({ data, disabled = false }: PlanLabellingP
           <img
             src={image.url}
             alt={image.altText}
+            width={image.width ?? undefined}
+            height={image.height ?? undefined}
             className="block max-w-full h-auto border border-gray-300 rounded"
           />
 

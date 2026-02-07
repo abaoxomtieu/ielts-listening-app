@@ -62,6 +62,8 @@ export default function MapLabelling({ data, disabled = false }: MapLabellingPro
           <img
             src={image.url}
             alt={image.altText}
+            width={image.width ?? undefined}
+            height={image.height ?? undefined}
             className="block max-w-full h-auto border border-gray-300 rounded"
           />
 
