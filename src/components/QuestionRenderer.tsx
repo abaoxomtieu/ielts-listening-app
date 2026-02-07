@@ -280,42 +280,44 @@ export default function QuestionRenderer({ data, showAnswers = false }: Question
     );
   }
 
-  // Render Matching Questions
+  // Render Matching Questions (same UI as home: PeopleOpinions, EventsInfo, LocationsFeatures)
   if (isMatchingQuestion(data)) {
-    // Events Info
+    const rawContent = (content || {}) as any;
+    const safeContent = {
+      ...rawContent,
+      questionText: rawContent?.questionText ?? 'Match the following.',
+      instructions: rawContent?.instructions ?? 'Choose your answers from the box.',
+      questions: Array.isArray(rawContent?.questions) ? rawContent.questions : [],
+      options: Array.isArray(rawContent?.options) ? rawContent.options : [],
+    };
+    const matchingData = {
+      meta,
+      content: safeContent,
+      answerKey: answerKey || {},
+    };
+
     if (meta.variant === 'events_info') {
       return (
         <div>
-          <EventsInfo
-            data={data as any}
-            disabled={false}
-          />
-          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={content.answer?.explanation} />}
+          <EventsInfo data={matchingData as any} disabled={false} />
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={safeContent.answer?.explanation} />}
         </div>
       );
     }
 
-    // Locations Features
     if (meta.variant === 'locations_features') {
       return (
         <div>
-          <LocationsFeatures
-            data={data as any}
-            disabled={false}
-          />
-          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={content.answer?.explanation} />}
+          <LocationsFeatures data={matchingData as any} disabled={false} />
+          {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={safeContent.answer?.explanation} />}
         </div>
       );
     }
 
-    // People Opinions (default)
     return (
       <div>
-        <PeopleOpinions
-          data={data as any}
-          disabled={false}
-        />
-        {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={content.answer?.explanation} />}
+        <PeopleOpinions data={matchingData as any} disabled={false} />
+        {showAnswers && <AnswerKeySection answerKey={answerKey} explanation={safeContent.answer?.explanation} />}
       </div>
     );
   }

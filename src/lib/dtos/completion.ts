@@ -6,7 +6,7 @@ export interface AudioTimeRange {
 // Common Interfaces
 export interface Meta {
     questionType: string;
-    variant: 'sentence_completion' | 'form_completion' | 'note_completion' | 'table_completion' | 'summary_completion' | 'flowchart_completion';
+    variant: 'sentence_completion' | 'form_completion' | 'note_completion' | 'table_completion' | 'summary_completion' | 'flowchart_completion' | 'people_opinions' | 'events_info' | 'locations_features';
     section: number;
     questionNumber: number;
 }

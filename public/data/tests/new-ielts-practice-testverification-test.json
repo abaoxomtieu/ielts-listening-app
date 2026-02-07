@@ -1,0 +1,59 @@
+{
+  "info": {
+    "title": "New IELTS Practice TestVerification Test",
+    "instructions": "Answer all questions. You will hear each recording once only.",
+    "totalDuration": "30 minutes",
+    "audioFiles": {
+      "section1": "",
+      "section2": "",
+      "section3": "",
+      "section4": ""
+    }
+  },
+  "sections": [
+    {
+      "id": 1,
+      "title": "",
+      "description": "",
+      "numberOfQuestions": 10,
+      "duration": "7-8 minutes",
+      "audioTime": {
+        "start": "00:00",
+        "end": "00:00"
+      },
+      "questions": [
+        {
+          "meta": {
+            "questionType": "completion",
+            "variant": "sentence_completion",
+            "section": 1,
+            "questionNumber": 1
+          },
+          "content": {
+            "questionText": "Complete the sentences below. Write",
+            "instructions": "ONE WORD ONLY",
+            "sentences": [],
+            "wordLimit": "ONE WORD ONLY",
+            "audioTimeRange": {
+              "start": "00:00",
+              "end": "00:00"
+            },
+            "media": {
+              "image": null,
+              "audio": "/audio/section4.mp3"
+            },
+            "uiHints": {
+              "displayType": "sentence",
+              "showSentenceNumbers": true,
+              "inlineInputs": true
+            }
+          },
+          "answerKey": {},
+          "scoring": {
+            "points": 1
+          }
+        }
+      ]
+    }
+  ]
+}
