@@ -25,9 +25,7 @@ interface Connection {
 
 interface Flowchart {
   title?: string;
-  startNode: Node;
   nodes: Node[];
-  endNode: Node;
   connections: Connection[];
 }
 
@@ -50,18 +48,20 @@ export default function FlowchartCompletion({
   showArrows = true,
   verticalLayout = true,
 }: FlowchartCompletionProps) {
-  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [answers, setAnswers] = useState<Record<string | number, string>>({});
 
-  const handleInputChange = (nodeId: number, value: string) => {
+  const handleInputChange = (nodeId: number | string, value: string) => {
     setAnswers((prev) => ({ ...prev, [nodeId]: value }));
   };
 
-  const renderTextWithInput = (text: string, nodeId?: number) => {
-    if (!nodeId) {
-      return <span className="text-gray-900">{text}</span>;
+  const renderTextWithInput = (text: string, nodeId?: number | string) => {
+    if (!text || !text.includes('[______]')) {
+      return <span className="text-gray-900 font-semibold">{text || ''}</span>;
     }
 
-    const parts = text.split('[______]');
+    if (!nodeId) return <span className="text-gray-900">{text}</span>;
+
+    const parts = (text || '').split('[______]');
 
     return (
       <div className="flex items-center justify-center gap-2">
@@ -76,7 +76,7 @@ export default function FlowchartCompletion({
             text-gray-900
             transition-colors duration-200
           `}
-          value={answers[nodeId] || ''}
+          value={answers[nodeId as any] || ''}
           onChange={(e) => handleInputChange(nodeId, e.target.value)}
           placeholder="_____"
         />
@@ -109,35 +109,29 @@ export default function FlowchartCompletion({
     );
   };
 
-  const renderNode = (node: Node, isEditable: boolean) => {
+  const renderNode = (node: Node, forceNonQuestion: boolean = false) => {
+    if (!node) return null;
+    const isQuestion = !forceNonQuestion && node.text && node.text.includes('[______]');
+
     return (
       <div
         className={`
           relative p-4 rounded-lg border-2 shadow-sm
-          ${
-            isEditable
-              ? 'bg-white border-blue-400 hover:border-blue-600'
-              : 'bg-gray-100 border-gray-400'
+          ${isQuestion
+            ? 'bg-white border-blue-400 hover:border-blue-600'
+            : 'bg-gray-100 border-gray-400'
           }
           transition-all duration-200
         `}
       >
-        {/* Question Number Badge for Editable Nodes */}
-        {isEditable && typeof node.id === 'number' && (
+        {isQuestion && typeof node.id === 'number' && (
           <div className="absolute -top-3 -left-3 w-8 h-8 flex items-center justify-center bg-blue-600 text-white text-sm font-bold rounded-full shadow-md z-10">
             {node.id}
           </div>
         )}
 
-        {/* Node Content */}
         <div className="text-center">
-          {isEditable ? (
-            renderTextWithInput(node.text, node.id as number)
-          ) : (
-            <p className="text-sm font-semibold text-gray-900 whitespace-pre-wrap">
-              {node.text}
-            </p>
-          )}
+          {renderTextWithInput(node.text, isQuestion ? node.id : undefined)}
         </div>
       </div>
     );
@@ -145,7 +139,6 @@ export default function FlowchartCompletion({
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 bg-white border-2 border-gray-300 rounded-lg shadow-sm">
-      {/* Header Section */}
       <div className="mb-6 pb-4 border-b-2 border-gray-400">
         {questionNumber && (
           <div className="text-sm font-semibold text-gray-700 mb-2">
@@ -156,12 +149,10 @@ export default function FlowchartCompletion({
         <p className="text-sm font-semibold text-gray-700">{instructions}</p>
       </div>
 
-      {/* Word Limit Notice */}
       <div className="mb-6 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
         <p className="text-sm font-semibold text-blue-800">{wordLimit}</p>
       </div>
 
-      {/* Flowchart Title */}
       {flowchart.title && (
         <div className="text-center mb-6">
           <h3 className="text-xl font-bold text-gray-900 uppercase tracking-wide">
@@ -170,91 +161,19 @@ export default function FlowchartCompletion({
         </div>
       )}
 
-      {/* Flowchart Container */}
       <div className="bg-white border-2 border-gray-400 rounded-lg p-8 overflow-x-auto">
         <div className="min-w-[300px]">
-          {/* Vertical Layout */}
-          {verticalLayout ? (
-            <div className="flex flex-col items-center space-y-4">
-              {/* Start Node */}
-              {renderNode(flowchart.startNode, false)}
-              {renderArrow()}
-
-              {/* Question Nodes */}
-              {flowchart.nodes.map((node, index) => (
-                <React.Fragment key={node.id}>
-                  {renderNode(node, true)}
-                  {index < flowchart.nodes.length - 1 && renderArrow()}
-                </React.Fragment>
-              ))}
-
-              {/* Final Arrow */}
-              {renderArrow()}
-
-              {/* End Node */}
-              {renderNode(flowchart.endNode, false)}
-            </div>
-          ) : (
-            /* Horizontal Layout */
-            <div className="flex items-center justify-center space-x-4">
-              {/* Start Node */}
-              {renderNode(flowchart.startNode, false)}
-
-              {/* Arrow */}
-              {showArrows && (
-                <div className="flex items-center">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="text-gray-600"
-                  >
-                    <path
-                      d="M4 12L20 12M20 12L13 5M20 12L13 19"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              )}
-
-              {/* Question Nodes */}
-              {flowchart.nodes.map((node, index) => (
-                <React.Fragment key={node.id}>
-                  {renderNode(node, true)}
-                  {showArrows && (
-                    <div className="flex items-center">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="text-gray-600"
-                      >
-                        <path
-                          d="M4 12L20 12M20 12L13 5M20 12L13 19"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </React.Fragment>
-              ))}
-
-              {/* End Node */}
-              {renderNode(flowchart.endNode, false)}
-            </div>
-          )}
+          <div className="flex flex-col items-center space-y-4">
+            {flowchart.nodes.map((node, index) => (
+              <React.Fragment key={node.id}>
+                {renderNode(node)}
+                {index < flowchart.nodes.length - 1 && renderArrow()}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Legend */}
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex items-center gap-3 p-3 bg-gray-50 border border-gray-200 rounded">
           <div className="w-10 h-10 flex items-center justify-center bg-gray-100 border-2 border-gray-400 rounded">
@@ -278,7 +197,6 @@ export default function FlowchartCompletion({
         </div>
       </div>
 
-      {/* Instructions Box */}
       <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded">
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <svg
@@ -306,3 +224,4 @@ export default function FlowchartCompletion({
     </div>
   );
 }
+

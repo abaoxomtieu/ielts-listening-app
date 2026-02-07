@@ -5,9 +5,7 @@ import React, { useState } from 'react';
 interface SentenceCompletionItem {
   id: number;
   text: string;
-  blankPosition: 'start' | 'middle' | 'end';
   answer: string;
-  fullSentence: string;
   audioTimeRange?: {
     start: string;
     end: string;
@@ -37,55 +35,11 @@ export default function SentenceCompletion({
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
   };
 
-  const renderTextWithInput = (text: string, questionId: number, blankPosition: 'start' | 'middle' | 'end') => {
-    const parts = text.split('[______]');
-
-    if (blankPosition === 'start') {
-      return (
-        <div className="inline-flex items-center gap-1">
-          <input
-            type="text"
-            id={`question-${questionId}`}
-            className={`
-              inline-block w-32 border-b-2 border-gray-500 bg-transparent
-              px-2 py-0.5
-              focus:border-black focus:outline-none
-              text-black text-center
-              transition-colors duration-200
-            `}
-            value={answers[questionId] || ''}
-            onChange={(e) => handleInputChange(questionId, e.target.value)}
-            placeholder="_____"
-          />
-          <span className="text-black">{text}</span>
-        </div>
-      );
-    }
-
-    if (blankPosition === 'end') {
-      return (
-        <div className="inline-flex items-center gap-1">
-          <span className="text-black">{text}</span>
-          <input
-            type="text"
-            id={`question-${questionId}`}
-            className={`
-              inline-block w-32 border-b-2 border-gray-500 bg-transparent
-              px-2 py-0.5
-              focus:border-black focus:outline-none
-              text-black text-center
-              transition-colors duration-200
-            `}
-            value={answers[questionId] || ''}
-            onChange={(e) => handleInputChange(questionId, e.target.value)}
-            placeholder="_____"
-          />
-        </div>
-      );
-    }
+  const renderTextWithInput = (text: string, questionId: number) => {
+    const parts = (text || '').split('[______]');
 
     return (
-      <div className="inline-flex items-center gap-1">
+      <div className="inline-flex items-center gap-1 flex-wrap">
         {parts[0] && <span className="text-black">{parts[0]}</span>}
         <input
           type="text"
@@ -139,7 +93,7 @@ export default function SentenceCompletion({
               {/* Sentence Text with Input */}
               <div className="flex-1">
                 <p className="text-base text-black leading-relaxed">
-                  {renderTextWithInput(sentence.text, sentence.id, sentence.blankPosition)}
+                  {renderTextWithInput(sentence.text, sentence.id)}
                 </p>
               </div>
             </div>
